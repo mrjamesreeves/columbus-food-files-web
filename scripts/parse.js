@@ -17,9 +17,11 @@ const ROOT = path.join(__dirname, '..');
 const SRC = path.join(ROOT, 'notes', 'source.txt');
 const OUT = path.join(ROOT, 'data', 'entries.json');
 
-// --- things that are not restaurants ---------------------------------------
-const PARK = /\b(park|park of roses|riverway)\b/i;
+// --- what belongs on a site called Columbus Food Files ---------------------
+// Groceries and markets stay: they are places you go for food. Parks and the
+// stray note about donating books are not, so they are dropped.
 const MARKET = /\b(market|grocery|trader joe|giant eagle|whole foods|saraga)\b/i;
+const NOT_FOOD = /^(.*\bpark\b.*|donations)$/i;
 
 // --- cuisine keywords, checked against name + body -------------------------
 const CUISINES = {
@@ -113,7 +115,7 @@ function parseDates(text) {
 const raw = fs.readFileSync(SRC, 'utf8').replace(/\r\n/g, '\n');
 let blocks = raw.split(/\n\s*\n/).map((b) => b.replace(/\n+$/, '')).filter((b) => b.trim());
 
-const report = { dropped: [], merged: [], duplicates: [], noVerdict: [], nonRestaurant: [] };
+const report = { dropped: [], merged: [], duplicates: [], noVerdict: [], markets: [], notFood: [] };
 
 // Drop the file title and Apple Notes' empty checkbox artefact.
 blocks = blocks.filter((b) => {
@@ -162,10 +164,12 @@ for (const block of blocks) {
   const text = [trailing, paren, ...body].filter(Boolean).join('\n');
   const all = name + '\n' + text;
 
-  let kind = 'restaurant';
-  if (PARK.test(name)) kind = 'park';
-  else if (MARKET.test(name)) kind = 'market';
-  if (kind !== 'restaurant') report.nonRestaurant.push({ name, kind });
+  if (NOT_FOOD.test(name)) {
+    report.notFood.push(name);
+    continue;
+  }
+  const kind = MARKET.test(name) ? 'market' : 'restaurant';
+  if (kind === 'market') report.markets.push(name);
 
   // Infer cuisine from the NAME first. Judging by the whole body tags a place
   // by whatever C. happened to eat or mention — Piada came out "indian"
@@ -236,5 +240,6 @@ console.log(`  marked closed       ${entries.filter((e) => e.closed).length}`);
 console.log(`\n  dropped:        ${report.dropped.map((d) => JSON.stringify(d)).join(', ')}`);
 console.log(`  merged strays:  ${report.merged.map((m) => `"${m.text}" -> ${m.into}`).join('; ') || 'none'}`);
 console.log(`  duplicates:     ${report.duplicates.join(', ') || 'none'}`);
-console.log(`  not restaurants: ${report.nonRestaurant.length} (${report.nonRestaurant.map((n) => n.name).join(', ')})`);
+console.log(`  markets kept:   ${report.markets.length} (${report.markets.join(', ')})`);
+console.log(`  not food, dropped: ${report.notFood.length} (${report.notFood.join(', ')})`);
 console.log(`\n  no verdict found (${report.noVerdict.length}): ${report.noVerdict.join(', ')}\n`);

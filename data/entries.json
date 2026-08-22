@@ -626,23 +626,6 @@
     "notes": "Dim sum on Bethel 9min away. Nice inside, big booth seating and tables\nhttps://www.yelp.com/biz/coco-cuisine-columbus\nGreat:\n- Chicken w mushroom stew - great! braised fall off bone chicken in a delicious dark sauce w something like sweet potato noodles \n- Pea shoots / Water spinach (on flip side of dim sum menu) - great thin greens, w garlic\n- Pan Fried Shrimp & Leeks Dumpling - great! Big patties w veg inside - Mom and Dad’s favorite \n- Beef mushrooms - good. Meatier flavor than beef broccoli \n- Beef broccoli - good, same beef as beef chow fun but a lot more beef \n- Chicken feet - typical\n- Beef chow fun - similar flavor to Sunflower but smaller portion \n- Fried dumplings - came attached like that pan fried, J loved \n- Braised chicken - good, tender chicken, lots of small bones, spicy \n- Crispy Stuffed Taro - great! Nice filling \n- Sticky rice - J loves \n- Singapore noodles - great! Classic w a little spice \n- Turnip cake - nicely fried, has turnip bits but not much or no meat, not much flavor \n- Scallion pancakes - great, lots of tiny triangles but pretty oily \n- Chef’s Special: salt and pepper calamari appetizer - pretty good, doesn’t have that salt pepper chicken flavor\n- Singapore rice noodle w seafood \n- Chili grass fish filet appetizer - great! Mom loved. Thin banners and cold and in chili oil \n- Spicy Dry Fried String Beans - good! Not too spicy and nice crisp \nOk:\n- Salt and Pepper Shrimp - meh, not as tender as feast buffet \n- Spicy Beef Stew Noodle Soup to share - nice tender beef, broth can be either too spicy or just right \n- Chef’s Special: Five spice sauteed beef - just lots of cold sliced beef and not that flavorful \n- Chef’s Special: Fuzhou Chow Mei Fun w seafood - ok, not really flavored, just salty \n- Seafood w fish belly chowder - looks like clear seafood soup, chef’s special \n- Shrimp w celery - fine, healthy, not much flavor \n- Lobster w ginger - meh, so breaded it tastes like shrimp. Hard to eat, chunks still stuck to shell \n- Water spinach - not as good as pea shoots, more stalks \n- Chinese style shrimp - good, sweet and spicy. W peanuts \n- Fish filet w double pepper sauce - fish is fried so no (and super spicy)\n- Szechuan chili beef bowl - ok, big beef but no veg, Szechuan flavor for sure  \n- Shrimp w hot pepper - small. ok, wish there were more veg \n- Shrimp & Chive Dumplings - ok. Glassy outside skin  Pan Fried Pork & Shrimp Bun - ok. Too much bun \n- Black pepper beef short ribs - \n- Clams in black bean - apparently we had it (Mom says) and it was just ok \n- Shrimp roll in red thing - ok \n- Shu mai - too thick, not juicy \nTry:\nChicken w broccoli \nChicken w cashew nuts \nLobster w yifu noodle\nSalt and pepper soft shell crab \nMongolian Beef \nEgg w tomato \nMiso chicken stew"
   },
   {
-    "id": "columbus-park-of-roses",
-    "name": "Columbus Park of Roses",
-    "kind": "park",
-    "verdict": null,
-    "verdictConfidence": "none",
-    "closed": false,
-    "location": null,
-    "cuisine": [],
-    "people": [
-      "N."
-    ],
-    "visits": [],
-    "prices": [],
-    "links": [],
-    "notes": "By Automobile: The street address for the Columbus Park of Roses is 3901 N. High St. The garden entrance is one-half mile west on Hollenback Road within Whetstone Park. There’s plenty of free parking. All the gardens are located to the east of the Whetstone Shelterhouse at the top of the steps."
-  },
-  {
     "id": "corelife-eatery",
     "name": "Corelife Eatery",
     "kind": "restaurant",
@@ -744,25 +727,6 @@
     "prices": [],
     "links": [],
     "notes": "Mexican in Worthington (ate after checking McConnell arts center, Nov 2024) \nKind of dumpy inside but nice enough for us. Free chips and salsa. The salsa has a nice kick. \nQuesadilla w carnitas - great! Generous platter w rice and refried beans. Took 1/2 home.\nJ got Chile quilles - he really liked it"
-  },
-  {
-    "id": "donations",
-    "name": "Donations",
-    "kind": "restaurant",
-    "verdict": null,
-    "verdictConfidence": "none",
-    "closed": false,
-    "location": null,
-    "cuisine": [],
-    "people": [
-      "J"
-    ],
-    "visits": [],
-    "prices": [
-      "$40"
-    ],
-    "links": [],
-    "notes": "Donate books bin across from Michael’s parking lot (main drag, then another parking lot)\nNew Uses (on Sawmill in a strip mall just north of Sunflower)\nJ got $40 for our Ikea patio furniture"
   },
   {
     "id": "eastern-bay",
@@ -984,23 +948,6 @@
     "notes": "Near Ty Ginger w of river \nGot falafel sandwich. Ok. White sauce is a little spicy \nJames liked his gyro sandwich"
   },
   {
-    "id": "high-banks-park",
-    "name": "High banks park",
-    "kind": "park",
-    "verdict": "great",
-    "verdictConfidence": "low",
-    "closed": false,
-    "location": null,
-    "cuisine": [],
-    "people": [],
-    "visits": [
-      "2022-06-28"
-    ],
-    "prices": [],
-    "links": [],
-    "notes": "Really nice went 6/28/22\nKatzinger sandwich picnic and walked a lovely forest path - overlook trail. Said it was loop but kept breaking off to various paths called duck and arrowhead so after a mile or so we turned around. Signage not great on paths so look at them more closely next time."
-  },
-  {
     "id": "hiro",
     "name": "Hiro",
     "kind": "restaurant",
@@ -1165,23 +1112,6 @@
     "notes": "Chicken lettuce wrap appetizer - good! Flavorful, don’t need sauce \nHoney ginger salad w salmon - good, salmon portion kinda small but it was tender delicious \nCod sandwich - Dad and James had it, both liked it, big portion of sub size cut in half \nPad thai - Mom had and liked it, said every bit was flavorful, they even cooked the shrimp well"
   },
   {
-    "id": "james-j-thomas-park",
-    "name": "James J Thomas Park",
-    "kind": "park",
-    "verdict": null,
-    "verdictConfidence": "none",
-    "closed": false,
-    "location": "Riverside park near us w picnic tables",
-    "cuisine": [],
-    "people": [
-      "J"
-    ],
-    "visits": [],
-    "prices": [],
-    "links": [],
-    "notes": "Riverside park near us w picnic tables \nVery nice"
-  },
-  {
     "id": "jiu-thai-asian-cafe",
     "name": "Jiu Thai Asian cafe",
     "kind": "restaurant",
@@ -1237,21 +1167,6 @@
       "https://ks2022.k2dweb.com/wp-content/uploads/2022/09/KitchenSocial_Dinner_menu_BP_010722.pdf"
     ],
     "notes": "Menu: https://ks2022.k2dweb.com/wp-content/uploads/2022/09/KitchenSocial_Dinner_menu_BP_010722.pdf\nDowntown Dublin \nCheddar scallion biscuits - delicious! Soft w crisp outer bits, buttery, yum \nThai shrimp - ok, fried shrimp w raw salad-like veg \nEggplant meatballs - good! Soft, sauce is good, slightly smoky tomato based \nBlackened shrimp capellini - great! Mom loves it. Tomato based spaghetti dish w a slight spice \nSalmon salad (salmon medium cooked) - good, salmon tender but no flavored, salad has small bits of sweet potato, quinoa, slightly sweet dressing \nSalmon entree (medium cooked) - good, salmon has slightly crisp outside (fried?) and tender inside. No flavor. Farro and spinach. Might like salad version more, although that dressing was maybe too sweet \nMushroom pizza - ok, too doughy for me \nFish and chips - good, fish is lightly crispy, but I just not that into fried food, fries soggy, coleslaw a little too sour \nCrab crusted snapper - meh, not enough flavor \nMiso butter cod - ok good, flaky, more like cod w crusty flavor on top. Rice medley it’s on is meh \nJ got chicken sandwich. Liked it. \nOpen airy space, sat by open side w fan \nhttps://www.yelp.com/biz/kitchen-social-dublin?osq=kitchen+social\nhttps://ks2022.k2dweb.com/wp-content/uploads/2022/09/KitchenSocial_Dinner_menu_BP_010722.pdf"
-  },
-  {
-    "id": "kiwanis-riverway-park",
-    "name": "Kiwanis Riverway Park",
-    "kind": "park",
-    "verdict": null,
-    "verdictConfidence": "none",
-    "closed": false,
-    "location": "Cute 15 min walk along boardwalk right along river",
-    "cuisine": [],
-    "people": [],
-    "visits": [],
-    "prices": [],
-    "links": [],
-    "notes": "Cute 15 min walk along boardwalk right along river. Saw ducks, robin, cardinal"
   },
   {
     "id": "koshi",
@@ -1670,23 +1585,6 @@
     "notes": "Twin lobster tails - great! Succulent \nJames got scallops (only 4) but loved them, well cooked \nCrab cake - ok, standard \nSmoked Gouda tater tots - fine \nPeanut butter chocolate pie - James liked but really rich, took half home\nChocolate torte - super rich like straight up chocolate, mom took most home \nWorth it for lobster and scallops"
   },
   {
-    "id": "olentangy-park",
-    "name": "Olentangy Park",
-    "kind": "park",
-    "verdict": null,
-    "verdictConfidence": "none",
-    "closed": false,
-    "location": "15 min from home",
-    "cuisine": [],
-    "people": [
-      "W."
-    ],
-    "visits": [],
-    "prices": [],
-    "links": [],
-    "notes": "W Wilson bridge entrance \nThe place where james runs and I walk along the river, nice long trails for walking jogging biking \nOlentangy River Park\nWhere james runs and I walk\nLovely forest and riverside \nAlso soccer field, tennis courts \n15 min from home \n600 W. Wilson Bridge Rd. \nWorthington, OH 43085"
-  },
-  {
     "id": "oscars",
     "name": "Oscars",
     "kind": "restaurant",
@@ -1942,21 +1840,6 @@
     "prices": [],
     "links": [],
     "notes": "Amazing! Huge and kind of feels like another country, tiny restaurants jewelers in spaces along the perimeter, including tiny Korean place filled w Asians. Went 5/26/22 in search of Momo Ghar but couldn’t find it. Whole aisles dedicated to just Southeast Asia or India. Lots of fresh produce I’ve never seen before. \n18 min by highway"
-  },
-  {
-    "id": "schiller-park",
-    "name": "Schiller Park",
-    "kind": "park",
-    "verdict": null,
-    "verdictConfidence": "none",
-    "closed": false,
-    "location": "Nice expansive park surrounded by Victorian houses",
-    "cuisine": [],
-    "people": [],
-    "visits": [],
-    "prices": [],
-    "links": [],
-    "notes": "Nice expansive park surrounded by Victorian houses. Playground, tennis courts, we had picnic near pond w water feature and foot bridge and Canadian geese and mallard ducks. Nice vibe w nature"
   },
   {
     "id": "sesame-sea-asian-bistro",
