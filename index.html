@@ -4,113 +4,115 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Columbus Food Files</title>
-<meta name="description" content="Years of notes on Columbus restaurants — what was good, who liked it, and whether it's worth going back.">
-<meta name="theme-color" content="#f7f3ec">
+<meta name="description" content="C.’s raw notes on eating in Columbus: what’s good, what isn’t, and whether it’s worth going back.">
+<meta name="theme-color" content="#f7f5f1">
 <meta property="og:title" content="Columbus Food Files">
-<meta property="og:description" content="Years of notes on Columbus restaurants — what was good, who liked it, and whether it's worth going back.">
+<meta property="og:description" content="C.’s raw notes on eating in Columbus: what’s good, what isn’t, and whether it’s worth going back.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍜</text></svg>">
+
+<link rel="preconnect" href="https://use.typekit.net" crossorigin>
+<link rel="stylesheet" href="https://use.typekit.net/nbb6llm.css">
 <style>
   :root {
-    --paper:#f7f3ec; --card:#fffdf9; --ink:#1f1b16; --soft:#6b6259; --faint:#a89e92;
-    --rule:#e2dace; --accent:#b4451f; --accent-soft:#f0e0d6;
-    --great:#2f6b3f; --good:#5c7a3a; --ok:#8a7320; --meh:#9a5a2a; --bad:#a33a2a;
-    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
-    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --paper:#f7f5f1; --card:#fff; --ink:#000; --soft:#666; --faint:#949494;
+    --rule:#e3e0da; --accent:#EC0000;
+    --serif:"playfair-display", Georgia, "Times New Roman", serif;
+    --sans:"ibm-plex-sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   }
   @media (prefers-color-scheme: dark) {
     :root {
-      --paper:#14120f; --card:#1c1917; --ink:#eae4db; --soft:#a49a8d; --faint:#6f665b;
-      --rule:#2e2925; --accent:#e27a4e; --accent-soft:#3a2820;
-      --great:#7fc08d; --good:#a8c47e; --ok:#d6bb5e; --meh:#dc9a63; --bad:#e8827a;
+      --paper:#101010; --card:#191919; --ink:#fff; --soft:#9c9c9c; --faint:#6e6e6e;
+      --rule:#2b2b2b; --accent:#ff3f2e;
     }
   }
   *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
   html { -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
   body { background:var(--paper); color:var(--ink); font-family:var(--sans);
          font-size:16px; line-height:1.55; -webkit-font-smoothing:antialiased; }
-  .wrap { max-width:900px; margin:0 auto; padding:0 20px; }
+  .wrap { max-width:880px; margin:0 auto; padding:0 20px; }
 
-  header { padding:44px 0 22px; }
-  h1 { font-family:var(--serif); font-size:clamp(34px,7vw,52px); font-weight:400;
-       letter-spacing:-.02em; line-height:1.05; }
+  header { padding:52px 0 24px; }
+  h1 { font-family:var(--serif); font-weight:700; font-size:clamp(36px,7.5vw,58px);
+       letter-spacing:-.015em; line-height:1.02; }
   h1 .dot { color:var(--accent); }
-  .blurb { color:var(--soft); margin-top:12px; max-width:56ch; font-size:15.5px; }
-  .blurb b { color:var(--ink); font-weight:600; }
+  .blurb { color:var(--soft); margin-top:14px; max-width:58ch; font-size:16px; }
 
   /* --- controls --- */
   .controls { position:sticky; top:0; z-index:20; background:var(--paper);
-              padding:14px 0 10px; border-bottom:1px solid var(--rule); }
+              padding:14px 0 12px; border-bottom:1px solid var(--rule); }
   .searchrow { display:flex; gap:8px; align-items:center; }
-  #q { flex:1; min-width:0; font:inherit; font-size:17px; color:var(--ink);
-       background:var(--card); border:1px solid var(--rule); border-radius:10px;
+  #q { flex:1; min-width:0; font:inherit; font-size:16px; color:var(--ink);
+       background:var(--card); border:1px solid var(--rule); border-radius:2px;
        padding:12px 14px; outline:none; }
-  #q:focus { border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-soft); }
+  #q:focus { border-color:var(--accent); }
   #q::placeholder { color:var(--faint); }
   .btn { font:inherit; font-size:14px; color:var(--soft); background:var(--card);
-         border:1px solid var(--rule); border-radius:10px; padding:12px 14px;
+         border:1px solid var(--rule); border-radius:2px; padding:12px 15px;
          cursor:pointer; white-space:nowrap; }
-  .btn:hover { color:var(--ink); border-color:var(--faint); }
+  .btn:hover { color:var(--ink); border-color:var(--ink); }
 
-  .filters { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
-  .chip { font-size:13px; font-family:var(--sans); color:var(--soft);
-          background:transparent; border:1px solid var(--rule); border-radius:999px;
-          padding:4px 11px; cursor:pointer; white-space:nowrap; }
-  .chip:hover { color:var(--ink); border-color:var(--faint); }
-  .chip[aria-pressed="true"] { background:var(--ink); border-color:var(--ink); color:var(--paper); }
-  .chip .n { opacity:.5; margin-left:5px; font-variant-numeric:tabular-nums; }
-  .grouplabel { font-size:11px; letter-spacing:.13em; text-transform:uppercase;
-                color:var(--faint); align-self:center; margin-right:2px; }
+  .filters { display:flex; flex-wrap:wrap; gap:6px; margin-top:11px; }
+  .chip { font:inherit; font-size:13px; color:var(--soft); background:transparent;
+          border:1px solid var(--rule); border-radius:2px; padding:4px 10px;
+          cursor:pointer; white-space:nowrap; }
+  .chip:hover { color:var(--ink); border-color:var(--ink); }
+  .chip[aria-pressed="true"] { background:var(--ink); border-color:var(--ink);
+                               color:var(--paper); }
+  .chip .n { opacity:.45; margin-left:6px; font-variant-numeric:tabular-nums; }
+  .grouplabel { font-size:10.5px; letter-spacing:.14em; text-transform:uppercase;
+                color:var(--faint); align-self:center; margin-right:3px; }
 
-  .count { color:var(--soft); font-size:13.5px; padding:14px 0 4px; }
-  .count b { color:var(--ink); font-variant-numeric:tabular-nums; }
+  .count { color:var(--soft); font-size:13px; letter-spacing:.02em; padding:18px 0 2px; }
+  .count b { color:var(--ink); font-weight:600; font-variant-numeric:tabular-nums; }
 
   /* --- cards --- */
-  main { padding-bottom:80px; }
-  .card { background:var(--card); border:1px solid var(--rule); border-radius:12px;
-          padding:18px 20px; margin:12px 0; scroll-margin-top:120px; }
+  main { padding-bottom:90px; }
+  .card { background:var(--card); border:0; border-radius:2px;
+          padding:22px 24px; margin:12px 0; scroll-margin-top:130px; }
   .cardhead { display:flex; flex-wrap:wrap; align-items:baseline; gap:10px; }
-  .name { font-family:var(--serif); font-size:23px; font-weight:400; letter-spacing:-.01em; }
+  .name { font-family:var(--serif); font-weight:700; font-size:25px;
+          letter-spacing:-.01em; line-height:1.2; }
   .name a { color:inherit; text-decoration:none; }
   .name a:hover { color:var(--accent); }
-  .verdict { font-size:11px; letter-spacing:.1em; text-transform:uppercase;
-             font-weight:700; padding:3px 8px; border-radius:5px; color:#fff; }
-  .v-great{background:var(--great)} .v-good{background:var(--good)}
-  .v-ok{background:var(--ok)} .v-meh{background:var(--meh)} .v-bad{background:var(--bad)}
-  @media (prefers-color-scheme: dark) { .verdict { color:#14120f; } }
-  .closed { font-size:11px; letter-spacing:.1em; text-transform:uppercase;
-            font-weight:700; padding:3px 8px; border-radius:5px;
-            border:1px solid var(--faint); color:var(--faint); }
 
-  .meta { display:flex; flex-wrap:wrap; gap:5px 8px; margin-top:8px;
-          font-size:12.5px; color:var(--soft); align-items:center; }
-  .tag { border:1px solid var(--rule); border-radius:999px; padding:2px 9px; }
-  .tag.person { border-color:var(--accent); color:var(--accent); }
-  .where { font-style:italic; }
+  .verdict { font-size:10px; letter-spacing:.14em; text-transform:uppercase;
+             font-weight:600; padding:3px 7px; border:1px solid currentColor;
+             border-radius:2px; line-height:1.4; }
+  .v-great { color:var(--accent); }
+  .v-good  { color:var(--ink); }
+  .v-ok    { color:var(--soft); }
+  .v-meh, .v-bad { color:var(--faint); }
+  .closed { font-size:10px; letter-spacing:.14em; text-transform:uppercase;
+            font-weight:600; padding:3px 7px; border:1px solid var(--faint);
+            border-radius:2px; color:var(--faint); line-height:1.4; }
 
-  .notes { margin-top:13px; padding-top:13px; border-top:1px solid var(--rule);
-           font-size:14.5px; color:var(--ink); white-space:pre-wrap;
+  .meta { margin-top:7px; font-size:13px; color:var(--soft); }
+  .meta .sep { color:var(--faint); padding:0 6px; }
+
+  .notes { margin-top:15px; padding-top:15px; border-top:1px solid var(--rule);
+           font-size:15px; color:var(--ink); white-space:pre-wrap;
            overflow-wrap:anywhere; }
   .notes.clamped { max-height:11.5em; overflow:hidden;
-                   -webkit-mask-image:linear-gradient(#000 65%, transparent);
-                   mask-image:linear-gradient(#000 65%, transparent); }
-  .more { margin-top:8px; font-size:13px; color:var(--accent); background:none;
-          border:none; padding:0; cursor:pointer; font-family:var(--sans); }
+                   -webkit-mask-image:linear-gradient(#000 62%, transparent);
+                   mask-image:linear-gradient(#000 62%, transparent); }
+  .more { margin-top:10px; font:inherit; font-size:13px; color:var(--accent);
+          background:none; border:0; padding:0; cursor:pointer; }
   .more:hover { text-decoration:underline; }
-  mark { background:var(--accent-soft); color:inherit; border-radius:2px; padding:0 1px; }
+  mark { background:var(--accent); color:#fff; border-radius:1px; padding:0 2px; }
   .notes a { color:var(--accent); }
 
-  .empty { text-align:center; color:var(--soft); padding:60px 20px; }
-  .empty b { display:block; font-family:var(--serif); font-size:22px;
-             color:var(--ink); margin-bottom:6px; }
+  .empty { text-align:center; color:var(--soft); padding:70px 20px; }
+  .empty b { display:block; font-family:var(--serif); font-weight:700;
+             font-size:24px; color:var(--ink); margin-bottom:6px; }
 
-  footer { border-top:1px solid var(--rule); padding:26px 0 60px;
+  footer { border-top:1px solid var(--rule); padding:28px 0 64px;
            color:var(--faint); font-size:13px; }
   footer a { color:var(--soft); }
 
   @media (max-width:560px) {
-    header { padding:30px 0 16px; }
-    .card { padding:15px 16px; }
+    header { padding:34px 0 18px; }
+    .card { padding:17px 18px; }
     .grouplabel { display:none; }
   }
 </style>
@@ -121,15 +123,14 @@
   <header>
     <h1>Columbus Food Files<span class="dot">.</span></h1>
     <p class="blurb">
-      Years of C.'s notes on eating in Columbus — what was good, what wasn't,
-      who liked it, and whether it's worth going back. <b>129 places.</b>
-      Her words, unedited.
+      C.’s raw notes on eating at 129 places in Columbus: what’s good,
+      what isn’t, and whether it’s worth going back.
     </p>
   </header>
 
   <div class="controls">
     <div class="searchrow">
-      <input id="q" type="search" placeholder="Search dishes, places, people — try “korma” or “Mom”" autocomplete="off" spellcheck="false" aria-label="Search the notes">
+      <input id="q" type="search" placeholder="Search restaurants, cuisines, and dishes" autocomplete="off" spellcheck="false" aria-label="Search the notes">
       <button class="btn" id="rand" title="Show me one at random">Surprise me</button>
     </div>
     <div class="filters" id="filters"></div>
@@ -151,6 +152,23 @@
   var ENTRIES = JSON.parse(document.getElementById('data').textContent);
 
   var VERDICT_ORDER = { great: 0, good: 1, ok: 2, meh: 3, bad: 4 };
+  var MONTHS = ['January','February','March','April','May','June','July',
+                'August','September','October','November','December'];
+
+  // "2021-01-02" and "2023-12" both read as "January 2021" / "December 2023".
+  // The exact day was never the useful part.
+  function monthLabel(iso) {
+    var p = iso.split('-');
+    return MONTHS[parseInt(p[1], 10) - 1] + ' ' + p[0];
+  }
+  function visitLabels(visits) {
+    var out = [];
+    visits.forEach(function (v) {
+      var l = monthLabel(v);
+      if (out.indexOf(l) === -1) out.push(l);
+    });
+    return out;
+  }
 
   // Fold accents and punctuation so “Chuy’s” matches "chuys".
   function norm(s) {
@@ -158,14 +176,16 @@
       .replace(/[̀-ͯ]/g, '').replace(/[’']/g, '').replace(/\s+/g, ' ');
   }
 
+  // People are no longer shown or filterable, but keeping them in the search
+  // index means "mom" still finds the meals she was there for.
   ENTRIES.forEach(function (e) {
     e._hay = norm([e.name, e.notes, e.location, e.cuisine.join(' '),
                    e.people.join(' '), e.people.indexOf('J') > -1 ? 'james' : '',
-                   e.kind, e.verdict, e.visits.join(' ')].join(' \n '));
+                   e.kind, e.verdict, e.visits.join(' '),
+                   visitLabels(e.visits).join(' ')].join(' \n '));
   });
 
-  // --- filter state -------------------------------------------------------
-  var state = { q: '', verdict: new Set(), cuisine: new Set(), people: new Set(), kind: new Set() };
+  var state = { q: '', verdict: new Set(), cuisine: new Set(), kind: new Set() };
 
   function counts(field) {
     var c = {};
@@ -178,7 +198,6 @@
 
   var GROUPS = [
     { key: 'verdict', label: 'Verdict', order: function (a, b) { return VERDICT_ORDER[a] - VERDICT_ORDER[b]; } },
-    { key: 'people',  label: 'With' },
     { key: 'cuisine', label: 'Food' },
     { key: 'kind',    label: 'Kind' },
   ];
@@ -200,7 +219,7 @@
       b.className = 'chip';
       b.type = 'button';
       b.setAttribute('aria-pressed', 'false');
-      b.innerHTML = esc(k === 'J' ? 'J' : k) + '<span class="n">' + c[k] + '</span>';
+      b.innerHTML = esc(k) + '<span class="n">' + c[k] + '</span>';
       b.addEventListener('click', function () {
         var on = state[g.key].has(k);
         if (on) state[g.key].delete(k); else state[g.key].add(k);
@@ -211,7 +230,6 @@
     });
   });
 
-  // --- matching -----------------------------------------------------------
   function matches(e) {
     for (var i = 0; i < GROUPS.length; i++) {
       var key = GROUPS[i].key, sel = state[key];
@@ -222,8 +240,6 @@
       if (!any) return false;
     }
     if (!state.q) return true;
-    // Every whitespace-separated term must appear somewhere. Quoted phrases
-    // stay together, so "chicken korma" does not match korma alone.
     return terms(state.q).every(function (t) { return e._hay.indexOf(t) > -1; });
   }
 
@@ -233,7 +249,6 @@
     return out.filter(Boolean);
   }
 
-  // --- rendering ----------------------------------------------------------
   function esc(s) {
     return String(s).replace(/[&<>"']/g, function (c) {
       return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c];
@@ -252,13 +267,14 @@
     ts.forEach(function (t) {
       if (t.length < 2) return;
       var re = new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
-      // Skip anything inside a tag or entity so markup is not corrupted.
       html = html.replace(/(<[^>]*>)|([^<]+)/g, function (_, tag, text) {
         return tag || text.replace(re, '<mark>$1</mark>');
       });
     });
     return html;
   }
+
+  function titleCase(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
 
   function card(e, ts) {
     var d = document.createElement('article');
@@ -269,21 +285,19 @@
     if (e.verdict) bits.push('<span class="verdict v-' + e.verdict + '">' + e.verdict + '</span>');
     if (e.closed) bits.push('<span class="closed">Closed</span>');
 
-    var meta = [];
-    if (e.location) meta.push('<span class="where">' + esc(e.location) + '</span>');
-    e.cuisine.forEach(function (c) { meta.push('<span class="tag">' + esc(c) + '</span>'); });
-    if (e.kind === 'market') meta.push('<span class="tag">market</span>');
-    e.people.forEach(function (p) { meta.push('<span class="tag person">with ' + esc(p) + '</span>'); });
-    if (e.visits.length) meta.push('<span>' + esc(e.visits.join(' · ')) + '</span>');
+    // One bullet-separated line: "Indian • By Meijer • January 2021"
+    var meta = e.cuisine.map(titleCase);
+    if (e.kind === 'market') meta.push('Market');
+    if (e.location) meta.push(e.location);
+    visitLabels(e.visits).forEach(function (v) { meta.push(v); });
 
     d.innerHTML =
       '<div class="cardhead"><h2 class="name"><a href="#' + esc(e.id) + '">' +
         highlight(esc(e.name), ts) + '</a></h2>' + bits.join('') + '</div>' +
-      (meta.length ? '<div class="meta">' + meta.join('') + '</div>' : '') +
+      (meta.length ? '<div class="meta">' +
+        meta.map(esc).join('<span class="sep">•</span>') + '</div>' : '') +
       '<div class="notes">' + highlight(linkify(esc(e.notes)), ts) + '</div>';
 
-    // Long notes get clamped, but never while a search is highlighting inside
-    // them — that would hide the thing the reader searched for.
     var notes = d.querySelector('.notes');
     if (!ts.length && e.notes.split('\n').length > 9) {
       notes.classList.add('clamped');
@@ -324,12 +338,11 @@
     syncURL();
   }
 
-  // --- URL state, so a search can be shared -------------------------------
   function syncURL() {
     var p = new URLSearchParams();
     if (state.q) p.set('q', state.q);
     GROUPS.forEach(function (g) {
-      if (state[g.key].size) p.set(g.key, [].concat.apply([], [Array.from(state[g.key])]).join(','));
+      if (state[g.key].size) p.set(g.key, Array.from(state[g.key]).join(','));
     });
     var qs = p.toString();
     history.replaceState(null, '', qs ? '?' + qs : location.pathname);
@@ -348,7 +361,6 @@
     });
   }
 
-  // --- wiring -------------------------------------------------------------
   var input = document.getElementById('q');
   input.addEventListener('input', function () { state.q = input.value.trim(); render(); });
 
