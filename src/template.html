@@ -17,14 +17,12 @@
   :root {
     --paper:#faf9f9; --card:#fff; --ink:#000; --soft:#666; --faint:#949494;
     --rule:#e3e0da; --accent:#EC0000; --chip:#8b8b8b; --chip-hover:#6b6b6b;
-    /* Verdict colours, shared by the badges and the filter chips. Only the
-       red carries white text at a readable contrast; the other three are
-       light enough that near-black reads far better at 10px. */
-    --v-great:#EC0000; --v-great-ink:#fff;
-    --v-good:#FF7300;  --v-good-ink:#111;
-    --v-ok:#748198;    --v-ok-ink:#111;
-    --v-meh:#798C82;   --v-meh-ink:#111;
-    --v-bad:#798C82;   --v-bad-ink:#111;
+    /* Verdict colours, shared by the badges and the filter chips. */
+    --v-great:#EC0000;
+    --v-good:#FF7300;
+    --v-ok:#748198;
+    --v-meh:#798C82;
+    --v-bad:#798C82;
     --serif:"playfair-display", Georgia, "Times New Roman", serif;
     --sans:"ibm-plex-sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   }
@@ -120,12 +118,12 @@
   .verdict, .closed { align-self:center; }
   .verdict { font-size:10px; letter-spacing:.14em; text-transform:uppercase;
              font-weight:600; padding:4px 8px; border:0; border-radius:2px;
-             line-height:1.4; }
-  .v-great { background:var(--v-great); color:var(--v-great-ink); }
-  .v-good  { background:var(--v-good);  color:var(--v-good-ink); }
-  .v-ok    { background:var(--v-ok);    color:var(--v-ok-ink); }
-  .v-meh   { background:var(--v-meh);   color:var(--v-meh-ink); }
-  .v-bad   { background:var(--v-bad);   color:var(--v-bad-ink); }
+             line-height:1.4; color:#fff; }
+  .v-great { background:var(--v-great); }
+  .v-good  { background:var(--v-good); }
+  .v-ok    { background:var(--v-ok); }
+  .v-meh   { background:var(--v-meh); }
+  .v-bad   { background:var(--v-bad); }
   .closed { font-size:10px; letter-spacing:.14em; text-transform:uppercase;
             font-weight:600; padding:4px 8px; border-radius:2px;
             background:#767676; color:#fff; line-height:1.4; }
