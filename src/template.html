@@ -80,13 +80,14 @@
   .chip:hover { background:var(--chip-hover); border-color:var(--chip-hover); }
   .chip[aria-pressed="true"] { background:var(--accent); border-color:var(--accent);
                                color:#fff; }
-  /* Verdict chips wear their own colour, so hovering "good" previews the same
-     orange you will see on the badges. */
-  .cv-great:hover, .cv-great[aria-pressed="true"] { background:var(--v-great); border-color:var(--v-great); color:var(--v-great-ink); }
-  .cv-good:hover,  .cv-good[aria-pressed="true"]  { background:var(--v-good);  border-color:var(--v-good);  color:var(--v-good-ink); }
-  .cv-ok:hover,    .cv-ok[aria-pressed="true"]    { background:var(--v-ok);    border-color:var(--v-ok);    color:var(--v-ok-ink); }
-  .cv-meh:hover,   .cv-meh[aria-pressed="true"]   { background:var(--v-meh);   border-color:var(--v-meh);   color:var(--v-meh-ink); }
-  .cv-bad:hover,   .cv-bad[aria-pressed="true"]   { background:var(--v-bad);   border-color:var(--v-bad);   color:var(--v-bad-ink); }
+  /* Verdict chips wear their own colour. Text stays #fff across all of them
+     for consistency — the badges keep their darker ink, where the contrast
+     matters because they are always on screen rather than transient. */
+  .cv-great:hover, .cv-great[aria-pressed="true"] { background:var(--v-great); border-color:var(--v-great); color:#fff; }
+  .cv-good:hover,  .cv-good[aria-pressed="true"]  { background:var(--v-good);  border-color:var(--v-good);  color:#fff; }
+  .cv-ok:hover,    .cv-ok[aria-pressed="true"]    { background:var(--v-ok);    border-color:var(--v-ok);    color:#fff; }
+  .cv-meh:hover,   .cv-meh[aria-pressed="true"]   { background:var(--v-meh);   border-color:var(--v-meh);   color:#fff; }
+  .cv-bad:hover,   .cv-bad[aria-pressed="true"]   { background:var(--v-bad);   border-color:var(--v-bad);   color:#fff; }
   .chip .n { opacity:.6; margin-left:6px; font-variant-numeric:tabular-nums; }
   .grouplabel {
     font-size: 11px;
