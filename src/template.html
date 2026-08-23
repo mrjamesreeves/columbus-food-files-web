@@ -56,7 +56,7 @@
   .btn:hover { color:var(--ink); border-color:var(--ink); }
 
   .filters { display:grid; grid-template-columns:auto 1fr; gap:8px 14px;
-             margin-top:12px; }
+             margin-top:12px; align-items:start; }
   .chips { display:flex; flex-wrap:wrap; gap:6px; }
   .chip {
     font: inherit;
@@ -149,7 +149,9 @@
   @media (max-width:560px) {
     header { padding:34px 0 18px; }
     .card { padding:17px 18px; }
-    .grouplabel { display:none; }
+    .filters { grid-template-columns:1fr; gap:3px; }
+    .grouplabel { padding-top:9px; }
+    .filters > .grouplabel:first-child { padding-top:0; }
   }
 </style>
 </head>
