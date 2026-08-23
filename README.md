@@ -10,20 +10,26 @@ notes/source.txt  →  scripts/parse.js  →  data/entries.json  →  scripts/bu
 `notes/source.txt` is the source of truth. Everything else is generated, and
 each entry's original text is carried through to the page verbatim.
 
-## Updating one restaurant
+## Editing
 
-Copy the entry in Apple Notes, then:
+The site edits itself: sign in at `columbusfoodfiles.com/?signin`, tap Edit on
+any entry, type, Done. Autosaves two seconds after typing stops. Each save is
+a commit to `notes/source.txt` (`api/save.js`), which triggers the rebuild —
+live in about 15 seconds. Git history is the undo.
 
-```bash
-./scripts/update.sh
-```
+Secrets live in Vercel env vars: `EDIT_PASSWORD_HASH` and `SESSION_SECRET`
+(generate with `scripts/hash-password.js`), and `GITHUB_TOKEN` (fine-grained,
+this repo only, contents read/write).
 
-That pulls from the clipboard, replaces the matching entry in `source.txt` (or
-inserts a new one alphabetically), re-parses and rebuilds. Review with
-`git diff --stat`, then commit and push — Vercel deploys in about 12 seconds.
+`lib/entries.js` locates entries by line range and is shared by the parser and
+the save endpoint so they always agree on boundaries. If you edit locally,
+`git pull` first — live edits land as commits.
 
-Matching is on the name alone, ignoring case, punctuation, `[tags]` and any
-trailing `(on Sawmill)`, so a rewritten entry still finds its original.
+## Updating one restaurant from the clipboard (legacy path)
+
+Copy the entry in Apple Notes, then `./scripts/update.sh` — replaces the
+matching entry (or inserts alphabetically), re-parses, rebuilds. Matching
+ignores case, punctuation, `[tags]` and trailing `(on Sawmill)`.
 
 ## Replacing everything
 
