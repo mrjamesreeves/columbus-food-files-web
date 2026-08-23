@@ -129,13 +129,20 @@ blocks = blocks.filter((b) => {
 
 // A block whose first line is plainly not a name is a stray continuation of
 // the previous entry that picked up an extra blank line in Apple Notes.
-const CONTINUATION = /^(lunch buffets?|hours?|open|closed \w+day|m-f|sa-su|tue|wed|thu|fri|sat|sun)\b/i;
+// A blank line inside an entry — before a bullet run, or after a "Try:"
+// heading — would otherwise read as the start of a new restaurant. None of
+// these shapes can be a name.
+const CONTINUATION = new RegExp([
+  '^\\s*[*\\u2022\\u00b7-]\\s+',                                   // a bullet
+  '^\\s*(great|good|ok|okay|meh|bad|try|excellent|order|avoid)\\s*:\\s*$', // a section heading
+  '^(lunch buffets?|hours?|open|closed \\w+day|m-f|sa-su|tue|wed|thu|fri|sat|sun)\\b',
+].join('|'), 'i');
 const merged = [];
 for (const b of blocks) {
   const first = b.split('\n')[0].trim();
   if (merged.length && CONTINUATION.test(first)) {
     report.merged.push({ into: merged[merged.length - 1].split('\n')[0].trim(), text: first });
-    merged[merged.length - 1] += '\n' + b;
+    merged[merged.length - 1] += '\n\n' + b;
   } else {
     merged.push(b);
   }
@@ -149,6 +156,28 @@ for (const block of blocks) {
   const lines = block.split('\n');
   let nameLine = lines[0].trim();
   const body = lines.slice(1);
+
+  // Explicit verdict marker: "Chili Spot [GREAT]". Apple Notes drops bold on
+  // paste, so this is how to state a verdict outright rather than leaving the
+  // parser to infer one from the prose.
+  // Trailing [tags] on the name line, any number of them:
+  //   "Chili Spot [GREAT] [Chinese]"
+  // A verdict word sets the verdict outright; anything else is a cuisine tag.
+  // This is the escape hatch for places the name and opening lines cannot
+  // classify, and it always beats what the parser would have guessed.
+  let stated = null;
+  const statedCuisine = [];
+  const VERDICT_TAG = /^(great|good|ok|okay|meh|bad|excellent|closed)$/i;
+  let tag;
+  while ((tag = nameLine.match(/\s*\[\s*([^\]]+?)\s*\]\s*$/))) {
+    nameLine = nameLine.slice(0, tag.index).trim();
+    const word = tag[1].toLowerCase();
+    if (VERDICT_TAG.test(word)) {
+      stated = word === 'excellent' ? 'great' : (word === 'okay' ? 'ok' : word);
+    } else {
+      statedCuisine.unshift(word);
+    }
+  }
 
   // "Al Manakeesh - by Meijer. Cheeses and such on bread. Palestinian"
   let trailing = '';
@@ -183,8 +212,13 @@ for (const block of blocks) {
       .filter(([, re]) => re.test(intro)).map(([k]) => k);
   }
   cuisine = cuisine.slice(0, 2);
+  if (statedCuisine.length) cuisine = statedCuisine;
 
-  const { verdict, confidence } = findVerdict([trailing, paren, ...body].filter(Boolean));
+  let { verdict, confidence } = findVerdict([trailing, paren, ...body].filter(Boolean));
+  if (stated && stated !== 'closed') {
+    verdict = stated;
+    confidence = 'stated';
+  }
   if (!verdict) report.noVerdict.push(name);
 
   // The first short body line that is not a verdict is usually the location.
@@ -212,7 +246,8 @@ for (const block of blocks) {
     verdictConfidence: confidence,
     // Narrow on purpose: an entry mentioning that some OTHER place was
     // closed should not be marked closed itself.
-    closed: /^\s*(permanently\s+)?closed\b/im.test(all) || /\b(now|permanently)\s+closed\b/i.test(all),
+    closed: stated === 'closed' ||
+      /^\s*(permanently\s+)?closed\b/im.test(all) || /\b(now|permanently)\s+closed\b/i.test(all),
     location,
     cuisine,
     people: findPeople(all),
@@ -231,6 +266,7 @@ fs.writeFileSync(OUT, JSON.stringify(entries, null, 2));
 const pct = (n) => `${Math.round((n / entries.length) * 100)}%`;
 console.log(`\nparsed ${entries.length} entries -> ${path.relative(ROOT, OUT)}\n`);
 console.log(`  with a verdict      ${entries.filter((e) => e.verdict).length}  (${pct(entries.filter((e) => e.verdict).length)})`);
+console.log(`    stated outright   ${entries.filter((e) => e.verdictConfidence === 'stated').length}`);
 console.log(`    high confidence   ${entries.filter((e) => e.verdictConfidence === 'high').length}`);
 console.log(`  with a location     ${entries.filter((e) => e.location).length}`);
 console.log(`  with a cuisine tag  ${entries.filter((e) => e.cuisine.length).length}`);

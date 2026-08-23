@@ -487,10 +487,12 @@
     "name": "Chili Spot",
     "kind": "restaurant",
     "verdict": "great",
-    "verdictConfidence": "low",
+    "verdictConfidence": "stated",
     "closed": false,
     "location": null,
-    "cuisine": [],
+    "cuisine": [
+      "chinese"
+    ],
     "people": [
       "Mom",
       "Dad"
@@ -500,7 +502,7 @@
     ],
     "prices": [],
     "links": [],
-    "notes": "Nice booth seating, clean \nCold inside (80 outside, cold in shorts, glad had cardigan)\nTry chongqing fried noodles, kung pao chicken, dan dan noodles, salt and pepper chicken \nGreat:\nYanchou fried rice - great! Light, has shrimp ham peas carrots \nEggplant w garlic - great! Bit oily but good flavor \nMapo tofu - great! Platonic. Last time too much Szechuan. No meat in it.\nSpicy wontons - great! Pork, nice flavor \nStorm fish filet - good! Fried but thinly and crisp\nCumin lamb - great, w cilantro. Last time, lamb like stringy banners, didn’t like as much as Eastern Bay version \nBraised Shanghai Green With Black Mushroom - bok choy w mushrooms, good \n6/4/22 - went w Mom and Dad\nFish filet in green pepper - soft fish but pepper spice too much for me\nSalt and pepper chicken - too thickly fried\nRibs - good flavor, some soft, on the bone \nPeople also like beef noodle soup\nTry:\nBoiled sliced fish called green pepper fish\nShredded pork garlic sauce \nBean curd w egg yolk\nBok choy \nBraised Shanghai green"
+    "notes": "Nice booth seating, clean \nCold inside (80 outside, cold in shorts, glad had cardigan)\nTry chongqing fried noodles, kung pao chicken, dan dan noodles, salt and pepper chicken \nGreat:\nYanchou fried rice - great! Light, has shrimp ham peas carrots \nEggplant w garlic - great! Bit oily but good flavor \nMapo tofu - great! Platonic. Last time too much Szechuan. No meat in it.\nSpicy wontons - great! Pork, nice flavor \nStorm fish filet - good! Fried but thinly and crisp\nCumin lamb - great, w cilantro. Last time, lamb like stringy banners, didn’t like as much as Eastern Bay version \nBraised Shanghai Green With Black Mushroom - bok choy w mushrooms, good \n6/4/22 - went w Mom and Dad\n* Fish filet in green pepper - soft fish but pepper spice too much for me\n* Salt and pepper chicken - too thickly fried\n* Ribs - good flavor, some soft, on the bone \n* People also like beef noodle soup\nTry:\n* Boiled sliced fish called green pepper fish\n* Shredded pork garlic sauce \n* Bean curd w egg yolk\n* Bok choy \n* Braised Shanghai green"
   },
   {
     "id": "chuan-jiang-hao-zi",

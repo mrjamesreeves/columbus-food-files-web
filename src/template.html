@@ -121,8 +121,14 @@
   .meta .sep { color:var(--faint); padding:0 6px; }
 
   .notes { margin-top:15px; padding-top:15px; border-top:1px solid var(--rule);
-           font-size:15px; color:var(--ink); white-space:pre-wrap;
-           overflow-wrap:anywhere; }
+           font-size:15px; color:var(--ink); overflow-wrap:anywhere; }
+  .notes p { margin:0; }
+  .notes .gap { height:.62em; }
+  /* Apple Notes drops bold on paste, and what she bolds is almost always the
+     section heading. Restoring the weight here recovers the structure. */
+  .notes .nhead { font-weight:600; margin-top:.55em; }
+  .notes ul { margin:.2em 0 .5em; padding-left:1.2em; }
+  .notes li { margin:.12em 0; }
   .notes.clamped { max-height:11.5em; overflow:hidden;
                    -webkit-mask-image:linear-gradient(#000 62%, transparent);
                    mask-image:linear-gradient(#000 62%, transparent); }
@@ -320,6 +326,32 @@
 
   function titleCase(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
 
+  var BULLET = /^\s*[*\u2022\u00b7-]\s+(.*)$/;
+  var NHEAD  = /^\s*(great|good|ok|okay|meh|bad|try|excellent|order|avoid)\s*:\s*$/i;
+
+  // Her notes are line-based: bullet runs, the odd section heading, and plain
+  // lines. Rendering those as real elements beats one pre-wrap blob.
+  function renderNotes(text) {
+    var out = [], list = null;
+    function flush() {
+      if (list) { out.push('<ul>' + list.join('') + '</ul>'); list = null; }
+    }
+    text.split('\n').forEach(function (raw) {
+      var line = raw.replace(/\s+$/, '');
+      var b = line.match(BULLET);
+      if (b && b[1].trim()) {
+        (list = list || []).push('<li>' + esc(b[1]) + '</li>');
+        return;
+      }
+      flush();
+      if (!line.trim()) { out.push('<div class="gap"></div>'); return; }
+      if (NHEAD.test(line)) { out.push('<p class="nhead">' + esc(line.trim()) + '</p>'); return; }
+      out.push('<p>' + esc(line) + '</p>');
+    });
+    flush();
+    return out.join('');
+  }
+
   function card(e, ts) {
     var d = document.createElement('article');
     d.className = 'card';
@@ -340,7 +372,7 @@
         highlight(esc(e.name), ts) + '</a></h2>' + bits.join('') + '</div>' +
       (meta.length ? '<div class="meta">' +
         meta.map(esc).join('<span class="sep">•</span>') + '</div>' : '') +
-      '<div class="notes">' + highlight(linkify(esc(e.notes)), ts) + '</div>';
+      '<div class="notes">' + highlight(linkify(renderNotes(e.notes)), ts) + '</div>';
 
     var notes = d.querySelector('.notes');
     if (!ts.length && e.notes.split('\n').length > 9) {
