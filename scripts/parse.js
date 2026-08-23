@@ -115,7 +115,7 @@ function parseDates(text) {
 const raw = fs.readFileSync(SRC, 'utf8').replace(/\r\n/g, '\n');
 let blocks = raw.split(/\n\s*\n/).map((b) => b.replace(/\n+$/, '')).filter((b) => b.trim());
 
-const report = { dropped: [], merged: [], duplicates: [], noVerdict: [], markets: [], notFood: [] };
+const report = { dropped: [], merged: [], duplicates: [], noVerdict: [], markets: [], notFood: [], oddTags: [] };
 
 // Drop the file title and Apple Notes' empty checkbox artefact.
 blocks = blocks.filter((b) => {
@@ -129,12 +129,16 @@ blocks = blocks.filter((b) => {
 
 // A block whose first line is plainly not a name is a stray continuation of
 // the previous entry that picked up an extra blank line in Apple Notes.
-// A blank line inside an entry — before a bullet run, or after a "Try:"
-// heading — would otherwise read as the start of a new restaurant. None of
-// these shapes can be a name.
+// A blank line inside an entry — before a bullet run, after a heading, or
+// around a stray link — would otherwise read as the start of a new
+// restaurant. None of these shapes can be a name.
 const CONTINUATION = new RegExp([
-  '^\\s*[*\\u2022\\u00b7-]\\s+',                                   // a bullet
-  '^\\s*(great|good|ok|okay|meh|bad|try|excellent|order|avoid)\\s*:\\s*$', // a section heading
+  '^\\s*[*\\u2022\\u00b7-]\\s+',            // a bullet
+  '^\\s*https?://',                          // a bare link
+  '[-\\u2013\\u2014]\\s*$',                        // a dish stub left dangling: "Eggs Benedict - "
+  '^\\s*[^a-z0-9]*$',                         // punctuation only, e.g. "?"
+  // A heading, with or without its colon: "Great:", "Try.", "Good ok", "Not great:"
+  '^\\s*(not\\s+)?(great|good|ok|okay|meh|bad|try|excellent|order|avoid)(\\s+(ok|good|great))?\\s*[:.]?\\s*$',
   '^(lunch buffets?|hours?|open|closed \\w+day|m-f|sa-su|tue|wed|thu|fri|sat|sun)\\b',
 ].join('|'), 'i');
 const merged = [];
@@ -166,16 +170,23 @@ for (const block of blocks) {
   // This is the escape hatch for places the name and opening lines cannot
   // classify, and it always beats what the parser would have guessed.
   let stated = null;
+  let statedClosed = false;
   const statedCuisine = [];
-  const VERDICT_TAG = /^(great|good|ok|okay|meh|bad|excellent|closed)$/i;
+  const VERDICT_TAG = /^(great|good|ok|okay|meh|bad|excellent)$/i;
   let tag;
   while ((tag = nameLine.match(/\s*\[\s*([^\]]+?)\s*\]\s*$/))) {
     nameLine = nameLine.slice(0, tag.index).trim();
-    const word = tag[1].toLowerCase();
+    const word = tag[1].toLowerCase().trim();
     if (VERDICT_TAG.test(word)) {
       stated = word === 'excellent' ? 'great' : (word === 'okay' ? 'ok' : word);
-    } else {
+    } else if (/\bclosed\b/.test(word)) {
+      // Covers "[Closed]" and looser notes like "[Closed or under renovation?]".
+      statedClosed = true;
+    } else if (/^[a-z]+(\s[a-z]+)?$/.test(word)) {
       statedCuisine.unshift(word);
+    } else {
+      // Anything else is a note to a human, not a tag. Do not guess.
+      report.oddTags.push({ name: nameLine, tag: tag[1] });
     }
   }
 
@@ -215,7 +226,7 @@ for (const block of blocks) {
   if (statedCuisine.length) cuisine = statedCuisine;
 
   let { verdict, confidence } = findVerdict([trailing, paren, ...body].filter(Boolean));
-  if (stated && stated !== 'closed') {
+  if (stated) {
     verdict = stated;
     confidence = 'stated';
   }
@@ -246,7 +257,7 @@ for (const block of blocks) {
     verdictConfidence: confidence,
     // Narrow on purpose: an entry mentioning that some OTHER place was
     // closed should not be marked closed itself.
-    closed: stated === 'closed' ||
+    closed: statedClosed ||
       /^\s*(permanently\s+)?closed\b/im.test(all) || /\b(now|permanently)\s+closed\b/i.test(all),
     location,
     cuisine,
@@ -278,4 +289,7 @@ console.log(`  merged strays:  ${report.merged.map((m) => `"${m.text}" -> ${m.in
 console.log(`  duplicates:     ${report.duplicates.join(', ') || 'none'}`);
 console.log(`  markets kept:   ${report.markets.length} (${report.markets.join(', ')})`);
 console.log(`  not food, dropped: ${report.notFood.length} (${report.notFood.join(', ')})`);
+if (report.oddTags.length) {
+  console.log(`  tags not understood: ${report.oddTags.map((t) => `${t.name} [${t.tag}]`).join('; ')}`);
+}
 console.log(`\n  no verdict found (${report.noVerdict.length}): ${report.noVerdict.join(', ')}\n`);

@@ -83,7 +83,7 @@
     "visits": [],
     "prices": [],
     "links": [],
-    "notes": "by Meijer. Cheeses and such on bread. Palestinian\nWait time is kinda long \n- two pizzas perfect amount to split between me and J \n- Zatar w tomato and cheese - ok, needed more sauce \n- Doblex meat cheese - like a sandwich in pizza form, Reuben without the Saurkraut \n- Meat cheese pizza - great, nice cinnamon flavor to meat \n- Akkawi cheese tomato pesto pizza - great, cheese like mozzarella \n- Labneh w zatar pizza - good, slightly sour yogurt w zattar mixed in (earthy) and arugula on top \nTry. \nMeat eggs pizza \nJerusalem bagel - turkey cheese or cheese pesto tomato rec \nLabneh (like greek yogurt) and vegetables pizza\nlabaneh and zaatar pizza too acidic said review"
+    "notes": "by Meijer. Cheeses and such on bread. Palestinian\nWait time is kinda long \n* two pizzas perfect amount to split between me and J \n* Zatar w tomato and cheese - ok, needed more sauce \n* Doblex meat cheese - like a sandwich in pizza form, Reuben without the Saurkraut \n* Meat cheese pizza - great, nice cinnamon flavor to meat \n* Akkawi cheese tomato pesto pizza - great, cheese like mozzarella \n* Labneh w zatar pizza - good, slightly sour yogurt w zattar mixed in (earthy) and arugula on top \nTry. \nMeat eggs pizza \nJerusalem bagel - turkey cheese or cheese pesto tomato rec \nLabneh (like greek yogurt) and vegetables pizza\nlabaneh and zaatar pizza too acidic said review"
   },
   {
     "id": "amul-india",
@@ -301,7 +301,7 @@
     "visits": [],
     "prices": [],
     "links": [],
-    "notes": "Pizza\nGot supreme to go \nGood, tons of toppings, pepperoni and sausage have a kick. Thicker bread than I usually like. J liked it. Similar to Luna pizza that Marty ordered in that one time"
+    "notes": "Pizza\nGot supreme to go \nGood, tons of toppings, pepperoni and sausage have a kick. Thicker bread than I usually like. J liked it. Similar to Luna pizza that M ordered in that one time"
   },
   {
     "id": "brown-bag-deli",
@@ -416,7 +416,7 @@
     "visits": [],
     "prices": [],
     "links": [],
-    "notes": "Polaris area near IKEA\nGreat supermarket attached w Italian meats, cheese, bread, wine, desserts \nAte dinner w J, Marty, Charla, Sam, Cady \nSpaghetti carbonara - good but really rich\nRed pepper sausage pasta - ok, not spicy"
+    "notes": "Polaris area near IKEA\nGreat supermarket attached w Italian meats, cheese, bread, wine, desserts \nAte dinner w J, M, C, S, C \nSpaghetti carbonara - good but really rich\nRed pepper sausage pasta - ok, not spicy"
   },
   {
     "id": "casa-oaxaca",
@@ -520,14 +520,14 @@
       "https://www.yelp.com/biz/chuan-jiang-hao-zi-columbus",
       "https://www.chuanjianghaoziohio.com"
     ],
-    "notes": "https://www.yelp.com/biz/chuan-jiang-hao-zi-columbus\nhttps://www.chuanjianghaoziohio.com\n16 min SE, in small strip under apartment building in middle of nowhere \nTry: \nSzechuan green peppercorn fish filet - good reviews \nWater spinach \nDry beef \nhot pot \nKung pao chicken \nCumin lamb \nEggplant w garlic sauce \nSpicy mixed meat Dry Pot \nCrab rangoon \nPan fried pork bun \n- “Chive bun” - Chive shrimp dumpling/bun (looks like round dumpling) - excellent! 3 per order. Packed w chives and shrimp \n- Chicken feet - typical \n- Boiled fish filet w hot chili oil - good! Soft filets, cabbage, bean sprouts w spicy mapo like soup sauce. Very spicy. \n- Chicken w green peppercorn main dish - excellent! Maybe too spicy! Chicken not fried, so great. Good spicy flavor on chicken, don’t eat green or red peppers\n- Fried chicken w hot chili - this one is fried, the other w green peppers is not \n- Bean curd rolls - good, 3 per order \n- Fried pork dumpling - good \n- Yan Chi fried rice - nice and light \n- Pork bun - ok, more like ground meat inside \n- Crab rangoon - ok, small, small amount of filling, 4 per order \n- Pork in garlic sauce - meh, sour flavor \n- Scallion pancake - meh, not much flavor \n- Xiao long bao - meh, dumpling filling has right flavor but no ginger sauce, little soup, 4 per order \n- Spicy wontons - meh. no flavor of filling \n- Stuffed tofu - meh, just soft tofu w fried outer shell and one shrimp on top\n- Note: sesame chicken is fried (saw photo on menu)"
+    "notes": "https://www.yelp.com/biz/chuan-jiang-hao-zi-columbus\nhttps://www.chuanjianghaoziohio.com\n16 min SE, in small strip under apartment building in middle of nowhere \nTry: \nSzechuan green peppercorn fish filet - good reviews \nWater spinach \nDry beef \nhot pot \nKung pao chicken \nCumin lamb \nEggplant w garlic sauce \nSpicy mixed meat Dry Pot \nCrab rangoon \nPan fried pork bun \n* “Chive bun” - Chive shrimp dumpling/bun (looks like round dumpling) - excellent! 3 per order. Packed w chives and shrimp \n* Chicken feet - typical \n* Boiled fish filet w hot chili oil - good! Soft filets, cabbage, bean sprouts w spicy mapo like soup sauce. Very spicy. \n* Chicken w green peppercorn main dish - excellent! Maybe too spicy! Chicken not fried, so great. Good spicy flavor on chicken, don’t eat green or red peppers\n* Fried chicken w hot chili - this one is fried, the other w green peppers is not \n* Bean curd rolls - good, 3 per order \n* Fried pork dumpling - good \n* Yan Chi fried rice - nice and light \n* Pork bun - ok, more like ground meat inside \n* Crab rangoon - ok, small, small amount of filling, 4 per order \n* Pork in garlic sauce - meh, sour flavor \n* Scallion pancake - meh, not much flavor \n* Xiao long bao - meh, dumpling filling has right flavor but no ginger sauce, little soup, 4 per order \n* Spicy wontons - meh. no flavor of filling \n* Stuffed tofu - meh, just soft tofu w fried outer shell and one shrimp on top\n* Note: sesame chicken is fried (saw photo on menu)"
   },
   {
     "id": "chuys",
     "name": "Chuy’s",
     "kind": "restaurant",
     "verdict": "ok",
-    "verdictConfidence": "high",
+    "verdictConfidence": "low",
     "closed": false,
     "location": "Mexican near Easton Mall",
     "cuisine": [
@@ -539,7 +539,7 @@
     "visits": [],
     "prices": [],
     "links": [],
-    "notes": "Mexican near Easton Mall\nOk, has a small outdoor seating area that looks onto parking lot\nHad quesadilla w chicken - thick bread w very little innards \nJ had Elvis platter, said it had 3 meats and all tasted same"
+    "notes": "Mexican near Easton Mall\n* Ok, has a small outdoor seating area that looks onto parking lot\n* Had quesadilla w chicken - thick bread w very little innards \n* J had Elvis platter, said it had 3 meats and all tasted same"
   },
   {
     "id": "city-barbecue-on-henderson",
@@ -577,7 +577,7 @@
     "visits": [],
     "prices": [],
     "links": [],
-    "notes": "For Book Club order (10-12 people) \nManchurian cauliflower app, Fish Amritsari app, Veg samosas 3 pieces x 4, chicken korma med spice x 2, navrattan korma med spice x 2, paneer makhani x 2, yellow daal tadka x 2, veg biryani x 2, garlic naan, raita \nSawmill, block north of blick , in fresh and thyme strip mall \nBooth seating w light piano music soundtrack\n- Pakora - great! Fried veg batter, nice flavor combo of herbs spices \n- Punjab Da Murgh (bone-in chicken) - great! Tender chicken like amul’s bone/in, with ginger, oily sauce but great chicken \n- Yellow daal tadka - great! Little leaves in it, really enjoy it as leftovers. Yellow lentils mellow \n- Paneer makhani - great! Has that addictive chef boy r d flavor, tomato based, my favorite here\n- Manchurian cauliflower app - good! Tasted almost like meat, fried w lots of chopped bits of celery onion etc that I liked . Not good for takeout - mushy not crispy \n- Chicken Korma (medium spice which is standard) - great! Good deep flavor\n- Baigan bharta - smoked eggplant, no, did not like flavor \n- Veg samosas - fine, typical \n- Garlic naan - great! Good garlic flavor \n- Raita - good! W bits, reminded me of my bell pepper yogurt mix \n- Ordering for 4 - Steven + Rebecca mahjong night (one vegetarian) - Manchurian cauliflower app, veg samosas 2 orders, chicken korma medium spice, navrattan korma medium spice, paneer makhani (paneer in tomato gravy), yellow daal tadka, veg biryani, baigan bharta (smoked eggplant), garlic naan, raita\nTry\n- Fish Amritsari app - fried fish spicy \nLunch buffets on F, Sa, Su 11:30-2:30\nGreat: chicken korma medium spice + garlic naan \nTry \nDaal makhani (lentils)\nLunch Buffet \nGood! Bigger spread than Aab. 36 + tip for two \nPaneer makhni - great! Good flavor sauce, orange and creamy \nBone in chicken in the biryani - great! Tender \nFried fish - good flavor mom liked \nHakka noodles - like meifun but no flavor. Mom dad liked \nButter chicken - good \nBiryani - two kinds! Took fall off bone in chicken, great and soft \nFried veg (corn bits w pepper) - good \nPaneer puri (fried egg shell you stuff w potato cilantro filling) - good, used and mixed w sauce from paneer \nTwo soups (corn soup + coconut curry) - meh. \nNaan - ok said J, not buttery (didn’t have)\nSponge bread - just for sponging sauce \nSaag paneer - Ok, not much flavor \nChicken biryani - ok, kind of sour in parts \nFish curry (under curry section) - No, sour red saw \nJ got Motor paneer spicy - he said good but prob won’t order again. Liked paneer soft. Said spicy (one level above medium spice) too much. \nCame to 57 plus tip"
+    "notes": "For Book Club order (10-12 people) \nManchurian cauliflower app, Fish Amritsari app, Veg samosas 3 pieces x 4, chicken korma med spice x 2, navrattan korma med spice x 2, paneer makhani x 2, yellow daal tadka x 2, veg biryani x 2, garlic naan, raita \nSawmill, block north of blick , in fresh and thyme strip mall \nBooth seating w light piano music soundtrack\n* Pakora - great! Fried veg batter, nice flavor combo of herbs spices \n* Punjab Da Murgh (bone-in chicken) - great! Tender chicken like amul’s bone/in, with ginger, oily sauce but great chicken \n* Yellow daal tadka - great! Little leaves in it, really enjoy it as leftovers. Yellow lentils mellow \n* Paneer makhani - great! Has that addictive chef boy r d flavor, tomato based, my favorite here\n* Manchurian cauliflower app - good! Tasted almost like meat, fried w lots of chopped bits of celery onion etc that I liked . Not good for takeout - mushy not crispy \n* Chicken Korma (medium spice which is standard) - great! Good deep flavor\n* Baigan bharta - smoked eggplant, no, did not like flavor \n* Veg samosas - fine, typical \n* Garlic naan - great! Good garlic flavor \n* Raita - good! W bits, reminded me of my bell pepper yogurt mix \n* Ordering for 4 - Steven + Rebecca mahjong night (one vegetarian) - Manchurian cauliflower app, veg samosas 2 orders, chicken korma medium spice, navrattan korma medium spice, paneer makhani (paneer in tomato gravy), yellow daal tadka, veg biryani, baigan bharta (smoked eggplant), garlic naan, raita\nTry\n* Fish Amritsari app - fried fish spicy \nLunch buffets on F, Sa, Su 11:30-2:30\nGreat: chicken korma medium spice + garlic naan \nTry \nDaal makhani (lentils)\nLunch Buffet \nGood! Bigger spread than Aab. 36 + tip for two \nPaneer makhni - great! Good flavor sauce, orange and creamy \nBone in chicken in the biryani - great! Tender \nFried fish - good flavor mom liked \nHakka noodles - like meifun but no flavor. Mom dad liked \nButter chicken - good \nBiryani - two kinds! Took fall off bone in chicken, great and soft \nFried veg (corn bits w pepper) - good \nPaneer puri (fried egg shell you stuff w potato cilantro filling) - good, used and mixed w sauce from paneer \nTwo soups (corn soup + coconut curry) - meh. \nNaan - ok said J, not buttery (didn’t have)\nSponge bread - just for sponging sauce \nSaag paneer - Ok, not much flavor \nChicken biryani - ok, kind of sour in parts \nFish curry (under curry section) - No, sour red saw \nJ got Motor paneer spicy - he said good but prob won’t order again. Liked paneer soft. Said spicy (one level above medium spice) too much. \nCame to 57 plus tip"
   },
   {
     "id": "coast-to-local-market",
@@ -625,7 +625,7 @@
     "links": [
       "https://www.yelp.com/biz/coco-cuisine-columbus"
     ],
-    "notes": "Dim sum on Bethel 9min away. Nice inside, big booth seating and tables\nhttps://www.yelp.com/biz/coco-cuisine-columbus\nGreat:\n- Chicken w mushroom stew - great! braised fall off bone chicken in a delicious dark sauce w something like sweet potato noodles \n- Pea shoots / Water spinach (on flip side of dim sum menu) - great thin greens, w garlic\n- Pan Fried Shrimp & Leeks Dumpling - great! Big patties w veg inside - Mom and Dad’s favorite \n- Beef mushrooms - good. Meatier flavor than beef broccoli \n- Beef broccoli - good, same beef as beef chow fun but a lot more beef \n- Chicken feet - typical\n- Beef chow fun - similar flavor to Sunflower but smaller portion \n- Fried dumplings - came attached like that pan fried, J loved \n- Braised chicken - good, tender chicken, lots of small bones, spicy \n- Crispy Stuffed Taro - great! Nice filling \n- Sticky rice - J loves \n- Singapore noodles - great! Classic w a little spice \n- Turnip cake - nicely fried, has turnip bits but not much or no meat, not much flavor \n- Scallion pancakes - great, lots of tiny triangles but pretty oily \n- Chef’s Special: salt and pepper calamari appetizer - pretty good, doesn’t have that salt pepper chicken flavor\n- Singapore rice noodle w seafood \n- Chili grass fish filet appetizer - great! Mom loved. Thin banners and cold and in chili oil \n- Spicy Dry Fried String Beans - good! Not too spicy and nice crisp \nOk:\n- Salt and Pepper Shrimp - meh, not as tender as feast buffet \n- Spicy Beef Stew Noodle Soup to share - nice tender beef, broth can be either too spicy or just right \n- Chef’s Special: Five spice sauteed beef - just lots of cold sliced beef and not that flavorful \n- Chef’s Special: Fuzhou Chow Mei Fun w seafood - ok, not really flavored, just salty \n- Seafood w fish belly chowder - looks like clear seafood soup, chef’s special \n- Shrimp w celery - fine, healthy, not much flavor \n- Lobster w ginger - meh, so breaded it tastes like shrimp. Hard to eat, chunks still stuck to shell \n- Water spinach - not as good as pea shoots, more stalks \n- Chinese style shrimp - good, sweet and spicy. W peanuts \n- Fish filet w double pepper sauce - fish is fried so no (and super spicy)\n- Szechuan chili beef bowl - ok, big beef but no veg, Szechuan flavor for sure  \n- Shrimp w hot pepper - small. ok, wish there were more veg \n- Shrimp & Chive Dumplings - ok. Glassy outside skin  Pan Fried Pork & Shrimp Bun - ok. Too much bun \n- Black pepper beef short ribs - \n- Clams in black bean - apparently we had it (Mom says) and it was just ok \n- Shrimp roll in red thing - ok \n- Shu mai - too thick, not juicy \nTry:\nChicken w broccoli \nChicken w cashew nuts \nLobster w yifu noodle\nSalt and pepper soft shell crab \nMongolian Beef \nEgg w tomato \nMiso chicken stew"
+    "notes": "Dim sum on Bethel 9min away. Nice inside, big booth seating and tables\nhttps://www.yelp.com/biz/coco-cuisine-columbus\nGreat:\n* Chicken w mushroom stew - great! braised fall off bone chicken in a delicious dark sauce w something like sweet potato noodles \n* Pea shoots / Water spinach (on flip side of dim sum menu) - great thin greens, w garlic\n* Pan Fried Shrimp & Leeks Dumpling - great! Big patties w veg inside - Mom and Dad’s favorite \n* Beef mushrooms - good. Meatier flavor than beef broccoli \n* Beef broccoli - good, same beef as beef chow fun but a lot more beef \n* Chicken feet - typical\n* Beef chow fun - similar flavor to Sunflower but smaller portion \n* Fried dumplings - came attached like that pan fried, J loved \n* Braised chicken - good, tender chicken, lots of small bones, spicy \n* Crispy Stuffed Taro - great! Nice filling \n* Sticky rice - J loves \n* Singapore noodles - great! Classic w a little spice \n* Turnip cake - nicely fried, has turnip bits but not much or no meat, not much flavor \n* Scallion pancakes - great, lots of tiny triangles but pretty oily \n* Chef’s Special: salt and pepper calamari appetizer - pretty good, doesn’t have that salt pepper chicken flavor\n* Singapore rice noodle w seafood \n* Chili grass fish filet appetizer - great! Mom loved. Thin banners and cold and in chili oil \n* Spicy Dry Fried String Beans - good! Not too spicy and nice crisp \nOk:\n* Salt and Pepper Shrimp - meh, not as tender as feast buffet \n* Spicy Beef Stew Noodle Soup to share - nice tender beef, broth can be either too spicy or just right \n* Chef’s Special: Five spice sauteed beef - just lots of cold sliced beef and not that flavorful \n* Chef’s Special: Fuzhou Chow Mei Fun w seafood - ok, not really flavored, just salty \n* Seafood w fish belly chowder - looks like clear seafood soup, chef’s special \n* Shrimp w celery - fine, healthy, not much flavor \n* Lobster w ginger - meh, so breaded it tastes like shrimp. Hard to eat, chunks still stuck to shell \n* Water spinach - not as good as pea shoots, more stalks \n* Chinese style shrimp - good, sweet and spicy. W peanuts \n* Fish filet w double pepper sauce - fish is fried so no (and super spicy)\n* Szechuan chili beef bowl - ok, big beef but no veg, Szechuan flavor for sure  \n* Shrimp w hot pepper - small. ok, wish there were more veg \n* Shrimp & Chive Dumplings - ok. Glassy outside skin \nPan Fried Pork & Shrimp Bun - ok. Too much bun \n* Black pepper beef short ribs - \n* Clams in black bean - apparently we had it (Mom says) and it was just ok \n* Shrimp roll in red thing - ok \n* Shu mai - too thick, not juicy \nTry:\nChicken w broccoli \nChicken w cashew nuts \nLobster w yifu noodle\nSalt and pepper soft shell crab \nMongolian Beef \nEgg w tomato \nMiso chicken stew"
   },
   {
     "id": "corelife-eatery",
@@ -788,7 +788,7 @@
     "visits": [],
     "prices": [],
     "links": [],
-    "notes": "Thai place on edge of city \nWent w Marty Charla Sam cady \nLarb chicken - just ok, like cat food, no cilantro just mint so not best flavor \nDrunken noodles - J liked"
+    "notes": "Thai place on edge of city \nLarb chicken - just ok, like cat food, no cilantro just mint so not best flavor \nDrunken noodles - J liked"
   },
   {
     "id": "falafel-kitchen",
@@ -928,7 +928,7 @@
     "links": [
       "https://www.yelp.com/biz/goodale-station-columbus"
     ],
-    "notes": "- located on the top floor of the Canopy Hilton hotel\n- A dedicated elevator will take you straight up to the 12th floor rooftop, where a glass-enclosed and sleek interior almost seamlessly blends into two outdoor terraces, all surrounded with fantastic views over the Columbus skyline.\nEggs Benedict - \nShort rib hash - great, tender beef, scrambled egg, over a very fried thick hash brown. Could have used ketchup\nFrench toast - James loved it \nKorean garlic buns - good, like soft buns that are garlic flavored w cream cheese, too much for me\nShort rib \nThere is limited street parking on both Nationwide Blvd and Chestnut St. There are parking garages available within the Convention center on Nationwide Blvd and on Chestnut St as well. \nhttps://www.yelp.com/biz/goodale-station-columbus"
+    "notes": "* located on the top floor of the Canopy Hilton hotel\n* A dedicated elevator will take you straight up to the 12th floor rooftop, where a glass-enclosed and sleek interior almost seamlessly blends into two outdoor terraces, all surrounded with fantastic views over the Columbus skyline.\nEggs Benedict - \nShort rib hash - great, tender beef, scrambled egg, over a very fried thick hash brown. Could have used ketchup\nFrench toast - James loved it \nKorean garlic buns - good, like soft buns that are garlic flavored w cream cheese, too much for me\nShort rib \nThere is limited street parking on both Nationwide Blvd and Chestnut St. There are parking garages available within the Convention center on Nationwide Blvd and on Chestnut St as well. \nhttps://www.yelp.com/biz/goodale-station-columbus"
   },
   {
     "id": "gyro-shoppe",
@@ -974,8 +974,8 @@
     "id": "houlihans",
     "name": "Houlihan’s",
     "kind": "restaurant",
-    "verdict": "great",
-    "verdictConfidence": "low",
+    "verdict": "ok",
+    "verdictConfidence": "stated",
     "closed": false,
     "location": "upper Arlington",
     "cuisine": [],
@@ -991,8 +991,8 @@
     "id": "hounddogs-pizza",
     "name": "Hounddogs pizza",
     "kind": "restaurant",
-    "verdict": null,
-    "verdictConfidence": "none",
+    "verdict": "good",
+    "verdictConfidence": "stated",
     "closed": false,
     "location": null,
     "cuisine": [
@@ -1002,7 +1002,7 @@
     "visits": [],
     "prices": [],
     "links": [],
-    "notes": "Marty’s favorite Columbus style pizza \nThin crispy, ranch dip \nSmokin joes pizza"
+    "notes": "M’s favorite Columbus style pizza \n* Thin crispy, ranch dip \n* Smokin joes pizza"
   },
   {
     "id": "hoyos-kitchen",
@@ -1360,7 +1360,7 @@
     "name": "Massey’s pizza",
     "kind": "restaurant",
     "verdict": "great",
-    "verdictConfidence": "low",
+    "verdictConfidence": "stated",
     "closed": false,
     "location": null,
     "cuisine": [
@@ -1372,7 +1372,7 @@
     "visits": [],
     "prices": [],
     "links": [],
-    "notes": "Thin crust corn meal, j loves after we had it at Marty’s\nSupreme - great! Generous toppings \nPhilly - meh, no flavor \nBLT - intriguing \nVeggie - don’t like sour banana peppers"
+    "notes": "Thin crust corn meal, j loves after we had it at M’s\nSupreme - great! Generous toppings \nPhilly - meh, no flavor \nBLT - intriguing \nVeggie - don’t like sour banana peppers"
   },
   {
     "id": "matt-the-miller",
@@ -1592,7 +1592,7 @@
     "kind": "restaurant",
     "verdict": "great",
     "verdictConfidence": "low",
-    "closed": false,
+    "closed": true,
     "location": "Directly across from Library in Dublin",
     "cuisine": [],
     "people": [
@@ -1662,8 +1662,8 @@
     "id": "tupelo-honey",
     "name": "Tupelo Honey",
     "kind": "restaurant",
-    "verdict": "good",
-    "verdictConfidence": "low",
+    "verdict": "great",
+    "verdictConfidence": "stated",
     "closed": false,
     "location": "Arlington",
     "cuisine": [],
@@ -1755,8 +1755,8 @@
     "id": "the-rail",
     "name": "The Rail",
     "kind": "restaurant",
-    "verdict": null,
-    "verdictConfidence": "none",
+    "verdict": "meh",
+    "verdictConfidence": "stated",
     "closed": false,
     "location": null,
     "cuisine": [
@@ -1766,7 +1766,7 @@
     "visits": [],
     "prices": [],
     "links": [],
-    "notes": "Local Burger shake place \nBrunch w Corinna and Jeff before car shopping"
+    "notes": "* Local Burger shake place \n* Brunch w Corinna and Jeff before car shopping\n* Boring."
   },
   {
     "id": "rebol",
@@ -1775,13 +1775,13 @@
     "verdict": null,
     "verdictConfidence": "none",
     "closed": false,
-    "location": null,
+    "location": "Dublin",
     "cuisine": [],
     "people": [],
     "visits": [],
     "prices": [],
     "links": [],
-    "notes": "Hip place in the new city area just north of us\nNice healthy bowls like bibibop but w tuna \nHad cauliflower rice, tuna, pickled veggies"
+    "notes": "Dublin\n* Hip place in the new city area just north of us\n* Nice healthy bowls like bibibop but w tuna \n* Had cauliflower rice, tuna, pickled veggies"
   },
   {
     "id": "red-lobster",
@@ -1864,8 +1864,8 @@
     "id": "siam-orchid-thai",
     "name": "Siam Orchid Thai",
     "kind": "restaurant",
-    "verdict": "meh",
-    "verdictConfidence": "high",
+    "verdict": "great",
+    "verdictConfidence": "stated",
     "closed": false,
     "location": "Sawmill rd, north of highway",
     "cuisine": [
@@ -1881,7 +1881,7 @@
       "https://www.yelp.com/biz/siam-orchid-thai-restaurant-dublin",
       "https://siamorchidcolumbus.com/dublin-dublin-siam-orchid-thai-restaurant-food-menu"
     ],
-    "notes": "Sawmill rd, north of highway\nTry:\n- Almond Ding - Sauteed diced broccoli, water chestnuts, bamboo shoots, snow pea pods, mushroom, and almond nuts in a delicious brown sauce.\n- Moo Goo Gai Pan - Tender white meat chicken, stir-fried with crisp snow pea pods, Napa, mushroom, water chestnuts, carrots, and bamboo shoots in white sauce.\nGreat:\n- Ginger veggies w shrimp - great! Good ginger flavor w generous shrimp, then long piece of onion, pepper, ginger\n- Moo shu w beef, chicken or whatever - great! Lots of veg, good flavor \n- Cashew chicken - great \n- Crazy Noodles - great, less sweet pad see ew \n- Thai cashew style sauce w chicken, medium spice - great, chicken banners and onion so not lots of veg but good flavor \n- Crab rangoon - typical, buttery, James liked. Had 2nd time just ok\n- Happy Family - good standard w lots of veg. Shrimp, beef, chicken, mushroom, water chestnuts, Napa, broccoli, snow pea pods, carrots, bamboo shoots, and baby corn sauteed in a brown sauce.\n- Green curry - I think this is the one I’ve liked in takeout. Red curry too spicy for me and even j. Didn’t like it with seafood option, chicken better. \nGood ok\n- Panng curry w beef - great! Like masaman curry, very coconut light color. Later j got it and said our red curry sauce we made (w mussels then chicken) was better \n- Dumplings “fine, not bad” said james \n- Pad see ew w beef - good, typical \n- Tiger tear beef salad - good, has a kick\nMeh\n- Orchid delight - good but a little sweet, maybe dad should try something else next time \n- Tom ka soup - too fishy, sour \n- Salad w peanut sauce - nothing special, chunky lettuce salad w chunky peanut sauce \n- Holy basil w chicken - too spicy, pepper spicy like that fish at chili spot \n- Garlic sauce w shrimp - bad sauce, more like sweet n sour, very little woodear mushrooms. But shrimp are cooked well. \nhttps://www.yelp.com/biz/siam-orchid-thai-restaurant-dublin\nhttps://siamorchidcolumbus.com/dublin-dublin-siam-orchid-thai-restaurant-food-menu"
+    "notes": "Sawmill rd, north of highway\nTry:\n* Almond Ding - Sauteed diced broccoli, water chestnuts, bamboo shoots, snow pea pods, mushroom, and almond nuts in a delicious brown sauce.\n* Moo Goo Gai Pan - Tender white meat chicken, stir-fried with crisp snow pea pods, Napa, mushroom, water chestnuts, carrots, and bamboo shoots in white sauce.\nGreat:\n* Ginger veggies w shrimp - great! Good ginger flavor w generous shrimp, then long piece of onion, pepper, ginger\n* Moo shu w beef, chicken or whatever - great! Lots of veg, good flavor \n* Cashew chicken - great \n* Crazy Noodles - great, less sweet pad see ew \n* Thai cashew style sauce w chicken, medium spice - great, chicken banners and onion so not lots of veg but good flavor \n* Crab rangoon - typical, buttery, James liked. Had 2nd time just ok\n* Happy Family - good standard w lots of veg. Shrimp, beef, chicken, mushroom, water chestnuts, Napa, broccoli, snow pea pods, carrots, bamboo shoots, and baby corn sauteed in a brown sauce.\n* Green curry - I think this is the one I’ve liked in takeout. Red curry too spicy for me and even j. Didn’t like it with seafood option, chicken better. \nGood ok\n* Panng curry w beef - great! Like masaman curry, very coconut light color. Later j got it and said our red curry sauce we made (w mussels then chicken) was better \n* Dumplings “fine, not bad” said james \n* Pad see ew w beef - good, typical \n* Tiger tear beef salad - good, has a kick\nMeh\n* Orchid delight - good but a little sweet, maybe dad should try something else next time \n* Tom ka soup - too fishy, sour \n* Salad w peanut sauce - nothing special, chunky lettuce salad w chunky peanut sauce \n* Holy basil w chicken - too spicy, pepper spicy like that fish at chili spot \n* Garlic sauce w shrimp - bad sauce, more like sweet n sour, very little woodear mushrooms. But shrimp are cooked well. \nhttps://www.yelp.com/biz/siam-orchid-thai-restaurant-dublin\nhttps://siamorchidcolumbus.com/dublin-dublin-siam-orchid-thai-restaurant-food-menu"
   },
   {
     "id": "slurping-turtle",
@@ -1891,17 +1891,14 @@
     "verdictConfidence": "low",
     "closed": false,
     "location": "In Easton Mall",
-    "cuisine": [
-      "japanese",
-      "korean"
-    ],
+    "cuisine": [],
     "people": [
       "J"
     ],
     "visits": [],
     "prices": [],
     "links": [],
-    "notes": "In Easton Mall\nJ got spicy miso ramen w duck fat chicken - good, kimchi-base broth\nI got red curry ramen - good flavor, would get again. Added fried chicken - didn’t like how they put all these crispy things in soup and they were soggy by time I got to them"
+    "notes": "In Easton Mall\n* J got spicy miso ramen w duck fat chicken - good, kimchi-base broth\n* I got red curry ramen - good flavor, would get again. Added fried chicken, didn’t like how they put all these crispy things in soup and they were soggy by time I got to them"
   },
   {
     "id": "so-gong-dong-tofu",
@@ -1952,7 +1949,7 @@
     "visits": [],
     "prices": [],
     "links": [],
-    "notes": "Meh. Close to downtown, ate outside by rusty trellis and cop chase\nBurrata starter tiny\nLoaded sweet potato bland \nJ said hot chicken sandwich not worth it\nDid have a good wine called Skins wine"
+    "notes": "Meh. Close to downtown, ate outside by rusty trellis and cop chase\n* Burrata starter tiny\n* Loaded sweet potato bland \n* J said hot chicken sandwich not worth it\n* Did have a good wine called Skins wine"
   },
   {
     "id": "sunflower-chinese-restaurant",
@@ -1960,7 +1957,7 @@
     "kind": "restaurant",
     "verdict": "great",
     "verdictConfidence": "low",
-    "closed": false,
+    "closed": true,
     "location": null,
     "cuisine": [
       "chinese"
@@ -1972,7 +1969,7 @@
     "visits": [],
     "prices": [],
     "links": [],
-    "notes": "Great: \n- Good order for 5 of us: 2 orders beef chow fun, black bean chicken, Chinese broccoli, fried taro, egg tarts (would order different than Chinese broccoli next time for more leafs) \n- Hot pot beef - great. Comes in dish w brown sauce. Beef tender w collagen-enhancing tendons. Mixed w triangle tofu pieces and green onion\n- Shrimp in garlic sauce - great. Brown sauce, mixed w small mushrooms and green onion  \n- Chicken w black bean sauce - excellent! Great flavor, tender chicken (no veggies in it) Black bean sauce as good as Mom’s catfish \n- Beef chow fun - great but oily, wide noodles, good flavor, J likes \n- Szechuan eggplant - good, nice soft eggplant in garlic sauce, not spicy \n- Chive dumplings - great! Generous greens filling \n- Garlic beef - great! Great flavor sauce, beef sometimes tendon-y chewy. (No veggies in it)\n- Steamed bean curd wrap - good, James likes, filled with woodear mushroom \n- Fried taro - good\n- Turnip cake - oily but platonic \n- Chicken feet - great, platonic \n- Egg tart - great, platonic, sweet spot bw liquid and solid\nMeh:\n- Egg foo young w shrimp - great! But then later no flavor. Lots of filling of shrimp bean sprouts and generous sauce that is mellow and not sweet at all \n- Moo shu - too sweet. plum sauce stir fried in\n- Beef dumpling dim sum - meh\n- Zongzi dim sum - weird innards, carrots inside and a strange non-chines sausage \n- Shrimp sleeping bag - too much gelatinous, small shrimp, no sauce\n- Crab rangoon - ok, small bland filling, mostly friedness\n- Wonton soup - ok, dumplings very pasta-y\n- Mapo tofu (not spicy, j doesn’t like)\nSunflower spicy pork - good! Good flavor sauce, but not spicy at all. James disappointed."
+    "notes": "Great: \n* Good order for 5 of us: 2 orders beef chow fun, black bean chicken, Chinese broccoli, fried taro, egg tarts (would order different than Chinese broccoli next time for more leafs) \n* Hot pot beef - great. Comes in dish w brown sauce. Beef tender w collagen-enhancing tendons. Mixed w triangle tofu pieces and green onion\n* Shrimp in garlic sauce - great. Brown sauce, mixed w small mushrooms and green onion  \n* Chicken w black bean sauce - excellent! Great flavor, tender chicken (no veggies in it) Black bean sauce as good as Mom’s catfish \n* Beef chow fun - great but oily, wide noodles, good flavor, J likes \n* Szechuan eggplant - good, nice soft eggplant in garlic sauce, not spicy \n* Chive dumplings - great! Generous greens filling \n* Garlic beef - great! Great flavor sauce, beef sometimes tendon-y chewy. (No veggies in it)\n* Steamed bean curd wrap - good, James likes, filled with woodear mushroom \n* Fried taro - good\n* Turnip cake - oily but platonic \n* Chicken feet - great, platonic \n* Egg tart - great, platonic, sweet spot bw liquid and solid\nMeh:\n* Egg foo young w shrimp - great! But then later no flavor. Lots of filling of shrimp bean sprouts and generous sauce that is mellow and not sweet at all \n* Moo shu - too sweet. plum sauce stir fried in\n* Beef dumpling dim sum - meh\n* Zongzi dim sum - weird innards, carrots inside and a strange non-chines sausage \n* Shrimp sleeping bag - too much gelatinous, small shrimp, no sauce\n* Crab rangoon - ok, small bland filling, mostly friedness\n* Wonton soup - ok, dumplings very pasta-y\n* Mapo tofu (not spicy, j doesn’t like)\n?\n* Sunflower spicy pork - good! Good flavor sauce, but not spicy at all. James disappointed."
   },
   {
     "id": "sunrise-asian-market",
@@ -2202,7 +2199,7 @@
     "visits": [],
     "prices": [],
     "links": [],
-    "notes": "Great:\nFrozen Gyoza dumplings \nFrozen butter sage gnocchi - delicious! One of best frozen food meals I’ve ever had\nFreeze-dried blueberries - sweet and crispy \nEverything bagel greek style yogurt dip (thick like cream cheese, dipped sugar snap peas into it)\nNot great:\nChicken salad \nEgg salad (too mayo-y and sour)\nSpinach kale yogurt dip"
+    "notes": "Great:\n* Frozen Gyoza dumplings \n* Frozen butter sage gnocchi - delicious! One of best frozen food meals I’ve ever had\n* Freeze-dried blueberries - sweet and crispy \n* Everything bagel greek style yogurt dip (thick like cream cheese, dipped sugar snap peas into it)\nNot great:\n* Chicken salad \n* Egg salad (too mayo-y and sour)\n* Spinach kale yogurt dip"
   },
   {
     "id": "tropical-smoothie-cafe",
@@ -2258,8 +2255,8 @@
     "id": "ty-ginger-asian-bistro",
     "name": "Ty Ginger Asian Bistro",
     "kind": "restaurant",
-    "verdict": "great",
-    "verdictConfidence": "low",
+    "verdict": "good",
+    "verdictConfidence": "stated",
     "closed": false,
     "location": null,
     "cuisine": [],
@@ -2311,13 +2308,11 @@
     "closed": false,
     "location": null,
     "cuisine": [],
-    "people": [
-      "J"
-    ],
+    "people": [],
     "visits": [],
     "prices": [],
     "links": [],
-    "notes": "Salad bar:\nSalmon - good \nSweet kale salad (I think that’s what it was) - tasty, like sweet balsamic vinegar on it w roasted red peppers, tasted like James’s favorite Italian sandwich when we ate near green-wood. Only available in winter"
+    "notes": "Salad bar:\nSalmon - good \nSweet kale salad (I think that’s what it was) - tasty, like sweet balsamic vinegar on it w roasted red peppers, tasted like J’s favorite Italian sandwich when we ate near green-wood. Only available in winter"
   },
   {
     "id": "wild-ginger",
