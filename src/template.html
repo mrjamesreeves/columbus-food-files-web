@@ -252,16 +252,27 @@
       b.className = 'chip';
       b.type = 'button';
       b.setAttribute('aria-pressed', 'false');
+      b.dataset.group = g.key;
+      b.dataset.value = k;
       b.innerHTML = esc(k) + '<span class="n">' + c[k] + '</span>';
       b.addEventListener('click', function () {
-        var on = state[g.key].has(k);
-        if (on) state[g.key].delete(k); else state[g.key].add(k);
-        b.setAttribute('aria-pressed', String(!on));
+        // One filter at a time: any click clears the rest, and clicking the
+        // active chip turns it off.
+        var wasOn = state[g.key].has(k);
+        GROUPS.forEach(function (gg) { state[gg.key].clear(); });
+        if (!wasOn) state[g.key].add(k);
+        syncChips();
         render();
       });
       row.appendChild(b);
     });
   });
+
+  function syncChips() {
+    Array.prototype.forEach.call(filtersEl.querySelectorAll('.chip'), function (b) {
+      b.setAttribute('aria-pressed', String(state[b.dataset.group].has(b.dataset.value)));
+    });
+  }
 
   function matches(e) {
     for (var i = 0; i < GROUPS.length; i++) {
@@ -385,13 +396,12 @@
     var p = new URLSearchParams(location.search);
     state.q = p.get('q') || '';
     document.getElementById('q').value = state.q;
-    GROUPS.forEach(function (g) {
-      (p.get(g.key) || '').split(',').filter(Boolean).forEach(function (v) { state[g.key].add(v); });
-    });
-    Array.prototype.forEach.call(filtersEl.querySelectorAll('.chip'), function (b) {
-      var label = b.firstChild.textContent;
-      GROUPS.forEach(function (g) { if (state[g.key].has(label)) b.setAttribute('aria-pressed', 'true'); });
-    });
+    for (var i = 0; i < GROUPS.length; i++) {
+      var g = GROUPS[i];
+      var v = (p.get(g.key) || '').split(',').filter(Boolean)[0];
+      if (v) { state[g.key].add(v); break; }
+    }
+    syncChips();
   }
 
   var input = document.getElementById('q');
