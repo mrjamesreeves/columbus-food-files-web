@@ -17,6 +17,14 @@
   :root {
     --paper:#faf9f9; --card:#fff; --ink:#000; --soft:#666; --faint:#949494;
     --rule:#e3e0da; --accent:#EC0000; --chip:#8b8b8b; --chip-hover:#6b6b6b;
+    /* Verdict colours, shared by the badges and the filter chips. Only the
+       red carries white text at a readable contrast; the other three are
+       light enough that near-black reads far better at 10px. */
+    --v-great:#EC0000; --v-great-ink:#fff;
+    --v-good:#FF7300;  --v-good-ink:#111;
+    --v-ok:#748198;    --v-ok-ink:#111;
+    --v-meh:#798C82;   --v-meh-ink:#111;
+    --v-bad:#798C82;   --v-bad-ink:#111;
     --serif:"playfair-display", Georgia, "Times New Roman", serif;
     --sans:"ibm-plex-sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   }
@@ -25,9 +33,6 @@
       --paper:#101010; --card:#191919; --ink:#fff; --soft:#9c9c9c; --faint:#6e6e6e;
       --rule:#2b2b2b; --accent:#ff3f2e; --chip:#4a4a4a; --chip-hover:#5e5e5e;
     }
-    /* --ink is white in dark mode, so the "good" badge needs its own fill
-       or it would be white text on white. */
-    .v-good { background:#3d3d3d; }
   }
   *,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
   html { -webkit-text-size-adjust:100%; scroll-behavior:smooth; }
@@ -75,6 +80,13 @@
   .chip:hover { background:var(--chip-hover); border-color:var(--chip-hover); }
   .chip[aria-pressed="true"] { background:var(--accent); border-color:var(--accent);
                                color:#fff; }
+  /* Verdict chips wear their own colour, so hovering "good" previews the same
+     orange you will see on the badges. */
+  .cv-great:hover, .cv-great[aria-pressed="true"] { background:var(--v-great); border-color:var(--v-great); color:var(--v-great-ink); }
+  .cv-good:hover,  .cv-good[aria-pressed="true"]  { background:var(--v-good);  border-color:var(--v-good);  color:var(--v-good-ink); }
+  .cv-ok:hover,    .cv-ok[aria-pressed="true"]    { background:var(--v-ok);    border-color:var(--v-ok);    color:var(--v-ok-ink); }
+  .cv-meh:hover,   .cv-meh[aria-pressed="true"]   { background:var(--v-meh);   border-color:var(--v-meh);   color:var(--v-meh-ink); }
+  .cv-bad:hover,   .cv-bad[aria-pressed="true"]   { background:var(--v-bad);   border-color:var(--v-bad);   color:var(--v-bad-ink); }
   .chip .n { opacity:.6; margin-left:6px; font-variant-numeric:tabular-nums; }
   .grouplabel {
     font-size: 11px;
@@ -107,12 +119,12 @@
   .verdict, .closed { align-self:center; }
   .verdict { font-size:10px; letter-spacing:.14em; text-transform:uppercase;
              font-weight:600; padding:4px 8px; border:0; border-radius:2px;
-             line-height:1.4; color:#fff; }
-  /* Greys stay dark enough that white text on them stays legible at 10px. */
-  .v-great { background:var(--accent); }
-  .v-good  { background:var(--ink); }
-  .v-ok    { background:#5a5a5a; }
-  .v-meh, .v-bad { background:#767676; }
+             line-height:1.4; }
+  .v-great { background:var(--v-great); color:var(--v-great-ink); }
+  .v-good  { background:var(--v-good);  color:var(--v-good-ink); }
+  .v-ok    { background:var(--v-ok);    color:var(--v-ok-ink); }
+  .v-meh   { background:var(--v-meh);   color:var(--v-meh-ink); }
+  .v-bad   { background:var(--v-bad);   color:var(--v-bad-ink); }
   .closed { font-size:10px; letter-spacing:.14em; text-transform:uppercase;
             font-weight:600; padding:4px 8px; border-radius:2px;
             background:#767676; color:#fff; line-height:1.4; }
@@ -262,6 +274,7 @@
       b.setAttribute('aria-pressed', 'false');
       b.dataset.group = g.key;
       b.dataset.value = k;
+      if (g.key === 'verdict') b.classList.add('cv-' + k);
       b.innerHTML = esc(k) + '<span class="n">' + c[k] + '</span>';
       b.addEventListener('click', function () {
         // One filter at a time: any click clears the rest, and clicking the
