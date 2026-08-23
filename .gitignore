@@ -1,5 +1,9 @@
+config.php
+_config.php
 .DS_Store
-.vercel
-node_modules
+*.log
 .env.local
 .env*
+.vercel
+public/
+node_modules

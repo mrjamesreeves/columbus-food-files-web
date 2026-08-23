@@ -1,6 +1,0 @@
-# Everything the site needs is baked into index.html at build time.
-# The pipeline stays in the repo; it just does not need to be served.
-notes/
-scripts/
-src/
-data/

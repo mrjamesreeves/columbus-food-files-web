@@ -43,6 +43,8 @@ if (html.includes('__DATA__') || html.includes('__COUNT__')) {
   throw new Error('template placeholder was not substituted');
 }
 
-const out = path.join(ROOT, 'index.html');
+const outDir = path.join(ROOT, 'public');
+fs.mkdirSync(outDir, { recursive: true });
+const out = path.join(outDir, 'index.html');
 fs.writeFileSync(out, html);
 console.log(`built index.html — ${slim.length} entries, ${(html.length / 1024).toFixed(0)}K`);
