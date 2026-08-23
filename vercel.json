@@ -1,0 +1,10 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.columbusfoodfiles.com" }],
+      "destination": "https://columbusfoodfiles.com/$1",
+      "permanent": true
+    }
+  ]
+}
