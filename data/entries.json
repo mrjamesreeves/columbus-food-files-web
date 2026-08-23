@@ -545,8 +545,8 @@
     "id": "city-barbecue-on-henderson",
     "name": "City Barbecue on Henderson",
     "kind": "restaurant",
-    "verdict": "good",
-    "verdictConfidence": "low",
+    "verdict": "ok",
+    "verdictConfidence": "stated",
     "closed": false,
     "location": null,
     "cuisine": [
