@@ -10,12 +10,23 @@ notes/source.txt  →  scripts/parse.js  →  data/entries.json  →  scripts/bu
 `notes/source.txt` is the source of truth. Everything else is generated, and
 each entry's original text is carried through to the page verbatim.
 
+The file is machine-managed: entries are separated by a line of equals signs
+(`=====`), so blank lines inside an entry are just content. The original
+blank-line format guessed at boundaries and corrupted itself once live edits
+introduced blank lines mid-entry (see the Bubbakoo's repair in git history).
+Don't hand-reorder the file; the endpoints keep it alphabetical.
+
 ## Editing
 
 The site edits itself: sign in at `columbusfoodfiles.com/?signin`, tap Edit on
-any entry, type, Done. Autosaves two seconds after typing stops. Each save is
-a commit to `notes/source.txt` (`api/save.js`), which triggers the rebuild —
-live in about 15 seconds. Git history is the undo.
+any entry, type, Done. Saves on Done, after ~20s of idle typing, and whenever
+the page is hidden (phone locked, tab closed). Each save is a commit to
+`notes/source.txt` (`api/save.js`), which triggers the rebuild — live in about
+15 seconds. Git history is the undo.
+
+**Adding a place:** the `+ Add` button (visible when signed in) opens a form —
+name, notes, Add. `api/add.js` inserts it alphabetically; `[GREAT] [thai]`
+tags work in the name field.
 
 Secrets live in Vercel env vars: `EDIT_PASSWORD_HASH` and `SESSION_SECRET`
 (generate with `scripts/hash-password.js`), and `GITHUB_TOKEN` (fine-grained,
@@ -25,26 +36,10 @@ this repo only, contents read/write).
 the save endpoint so they always agree on boundaries. If you edit locally,
 `git pull` first — live edits land as commits.
 
-## Updating one restaurant from the clipboard (legacy path)
-
-Copy the entry in Apple Notes, then `./scripts/update.sh` — replaces the
-matching entry (or inserts alphabetically), re-parses, rebuilds. Matching
-ignores case, punctuation, `[tags]` and trailing `(on Sawmill)`.
-
-## Replacing everything
-
-```bash
-pbpaste > notes/source.txt
-node scripts/parse.js && node scripts/build.js
-```
-
-`parse.js` reports what it had to decide: entries it merged, duplicates it
-folded together, non-food entries it dropped, and any place it could not read
-a verdict from.
-
 ## Writing notes so they parse well
 
-Entries are separated by a blank line, with the name on the first line.
+The name is an entry's first line; everything after is notes, and blank
+lines inside notes are always safe.
 Blank lines *inside* an entry are fine — bullet runs and section headings are
 recognised as continuations.
 
