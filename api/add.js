@@ -7,7 +7,7 @@
  */
 
 const { isEditor } = require('./_auth');
-const { insertEntry } = require('../lib/entries');
+const { insertEntry, setVerdictTag } = require('../lib/entries');
 
 const REPO = 'mrjamesreeves/columbus-food-files-web';
 const FILE = 'notes/source.txt';
@@ -41,11 +41,16 @@ module.exports = async (req, res) => {
     return res.status(500).json({ error: 'server not configured' });
   }
 
-  let name, notes;
+  let name, notes, verdict = null;
+  const VERDICTS = new Set(['great', 'good', 'ok', 'meh', 'bad']);
   try {
     const body = typeof req.body === 'string' ? JSON.parse(req.body) : (req.body || {});
     name = String(body.name || '').trim();
     notes = String(body.notes ?? '');
+    if (body.verdict != null) {
+      verdict = String(body.verdict).toLowerCase();
+      if (!VERDICTS.has(verdict)) return res.status(400).json({ error: 'not a verdict' });
+    }
   } catch {
     return res.status(400).json({ error: 'bad request' });
   }
@@ -57,7 +62,8 @@ module.exports = async (req, res) => {
     const file = await gh(`contents/${FILE}?ref=${BRANCH}`);
     const current = Buffer.from(file.content, 'base64').toString('utf8');
 
-    const result = insertEntry(current, name, notes);
+    // A tapped chip beats a typed [TAG]; with no chip, typed tags stand.
+    const result = insertEntry(current, verdict ? setVerdictTag(name, verdict) : name, notes);
     if (result.error) return res.status(409).json({ error: result.error });
 
     await gh(`contents/${FILE}`, {

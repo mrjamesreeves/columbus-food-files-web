@@ -1453,6 +1453,24 @@
     "notes": "Nepalese dumplings in north market downtown. \n“Not going back. Glad I went.” - J\nTried combo chicken ones (special flavor like ginger curry) and pork ones (tastes just like regular dumplings). Skins are thick, watery sauce is spicy."
   },
   {
+    "id": "mr-so-good",
+    "name": "Mr So Good",
+    "kind": "restaurant",
+    "verdict": "great",
+    "verdictConfidence": "low",
+    "closed": false,
+    "location": null,
+    "cuisine": [],
+    "people": [
+      "J",
+      "Mom"
+    ],
+    "visits": [],
+    "prices": [],
+    "links": [],
+    "notes": "Taiwanese stall inside CAM grocery \nIt’s great \nGreat:\n- braised tofu - big chunks of fried tofu, great flavor, j liked it too \n- Bean curds (in prepared foods across) - great, smaller than coco rtrcuisine but same vibe \n- braised soy sauce eggs just like the kind mom used to make \n- sliced meat like the cold sliced style, soft and tasty if I add a little tempura \nOk:\n- Meifen noodles - not much veg in it or flavor but still nice consistency. Doctored it with tempura"
+  },
+  {
     "id": "mr-sushi",
     "name": "Mr Sushi",
     "kind": "restaurant",

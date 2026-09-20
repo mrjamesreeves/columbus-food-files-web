@@ -7,7 +7,7 @@
  */
 
 const { isEditor } = require('./_auth');
-const { splitEntries, replaceBody } = require('../lib/entries');
+const { splitEntries, replaceBody, replaceEntry, setVerdictTag } = require('../lib/entries');
 
 const REPO = 'mrjamesreeves/columbus-food-files-web';
 const FILE = 'notes/source.txt';
@@ -40,11 +40,18 @@ module.exports = async (req, res) => {
     return res.status(500).json({ error: 'server not configured' });
   }
 
-  let id, notes;
+  let id, notes, verdict;   // verdict: undefined = untouched, null = clear
+  const VERDICTS = new Set(['great', 'good', 'ok', 'meh', 'bad']);
   try {
     const body = typeof req.body === 'string' ? JSON.parse(req.body) : (req.body || {});
     id = String(body.id || '');
     notes = String(body.notes ?? '');
+    if ('verdict' in body) {
+      verdict = body.verdict === null ? null : String(body.verdict).toLowerCase();
+      if (verdict !== null && !VERDICTS.has(verdict)) {
+        return res.status(400).json({ error: 'not a verdict' });
+      }
+    }
   } catch {
     return res.status(400).json({ error: 'bad request' });
   }
@@ -59,7 +66,9 @@ module.exports = async (req, res) => {
     const entry = splitEntries(current).find((e) => e.id === id);
     if (!entry) return res.status(404).json({ error: 'no such entry' });
 
-    const updated = replaceBody(current, id, notes);
+    const updated = verdict === undefined
+      ? replaceBody(current, id, notes)
+      : replaceEntry(current, id, setVerdictTag(entry.nameLine, verdict), notes);
     // replaceBody returns null when the id is ambiguous — never guess.
     if (updated === null) return res.status(409).json({ error: 'entry is ambiguous, not saved' });
     if (updated === current) return res.status(200).json({ ok: true, unchanged: true, name: entry.name });

@@ -539,6 +539,31 @@
     t.style.height = t.scrollHeight + 'px';
   }
 
+  // Tappable verdict chips, same colours as the filters. Tapping the active
+  // chip clears it.
+  function verdictPicker(initial, onChange) {
+    var wrap = document.createElement('div');
+    wrap.className = 'chips';
+    wrap.style.marginTop = '12px';
+    var current = initial || null;
+    ['great', 'good', 'ok', 'meh'].forEach(function (v) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'chip cv-' + v;
+      b.textContent = v;
+      b.setAttribute('aria-pressed', String(v === current));
+      b.addEventListener('click', function () {
+        current = (current === v) ? null : v;
+        Array.prototype.forEach.call(wrap.children, function (c) {
+          c.setAttribute('aria-pressed', String(c.textContent === current));
+        });
+        onChange(current);
+      });
+      wrap.appendChild(b);
+    });
+    return { el: wrap, get: function () { return current; } };
+  }
+
   function openEditor(entry, cardEl) {
     if (editing && editing.id !== entry.id) closeEditor();
     var notes = cardEl.querySelector('.notes');
@@ -552,6 +577,9 @@
     notes.replaceWith(t);
     autosize(t);
 
+    var picker = verdictPicker(entry.verdict, function () { markDirty(); });
+    t.before(picker.el);
+
     var row = document.createElement('div');
     row.className = 'editrow';
     var st = document.createElement('span');
@@ -564,16 +592,22 @@
     row.appendChild(done);
     t.after(row);
 
-    editing = { id: entry.id, entry: entry, card: cardEl, textarea: t, statusEl: st, original: entry.notes };
+    editing = { id: entry.id, entry: entry, card: cardEl, textarea: t, statusEl: st,
+                original: entry.notes, picker: picker, verdictOriginal: entry.verdict || null };
+
+    function markDirty() {
+      if (!editing) return;
+      status(isDirty() ? 'Unsaved' : 'Saved');
+      clearTimeout(saveTimer);
+      if (isDirty()) saveTimer = setTimeout(save, 20000);
+    }
 
     t.addEventListener('input', function () {
       autosize(t);
-      status(t.value === editing.original ? 'Saved' : 'Unsaved');
       // A safety net, not the main path. A long idle window keeps a writing
       // session from becoming twenty commits and twenty deploys; the page
       // also saves the moment it is hidden or closed, so nothing is lost.
-      clearTimeout(saveTimer);
-      if (t.value !== editing.original) saveTimer = setTimeout(save, 20000);
+      markDirty();
     });
     t.focus();
     // iOS needs a beat before it will scroll a freshly focused field into view.
@@ -590,28 +624,46 @@
     e.card.replaceWith(fresh);
   }
 
+  function isDirty() {
+    return Boolean(editing) && (editing.textarea.value !== editing.original ||
+                                editing.picker.get() !== editing.verdictOriginal);
+  }
+
   function save() {
     if (!editing) return;
     clearTimeout(saveTimer);
     var e = editing;
     var value = e.textarea.value;
-    if (value === e.original) { status('Saved'); return; }
-    e.original = value;   // claim it now so a second timer does not resend
+    var verdict = e.picker.get();
+    var verdictChanged = verdict !== e.verdictOriginal;
+    if (value === e.original && !verdictChanged) { status('Saved'); return Promise.resolve(true); }
+    // Claim now so a second timer does not resend, but remember what to put
+    // back if the request fails: otherwise a failed save reads as saved and
+    // Done silently drops the edit.
+    var prevOriginal = e.original, prevVerdict = e.verdictOriginal;
+    var saved = false;
+    e.original = value;
+    e.verdictOriginal = verdict;
 
     status('Saving…');
-    fetch('/api/save', {
+    var payload = { id: e.id, notes: value };
+    if (verdictChanged) payload.verdict = verdict;
+    return fetch('/api/save', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id: e.id, notes: value }),
+      body: JSON.stringify(payload),
     }).then(function (r) {
       return r.json().then(function (j) { return { ok: r.ok, body: j }; });
     }).then(function (out) {
       var live = editing && editing.id === e.id;
       if (!out.ok) {
+        e.original = prevOriginal;
+        e.verdictOriginal = prevVerdict;
         if (live) status(out.body.error || 'Could not save', true);
         else console.warn('save failed after close:', out.body.error);
-        return;
+        return false;
       }
+      if (verdictChanged) e.entry.verdict = verdict;
       // Reconcile whether or not the editor is still open. A save that lands
       // after she closes the card is still a save; the page must agree with
       // the server rather than quietly showing stale text until a reload.
@@ -620,6 +672,8 @@
                            e.entry.people.join(' '), e.entry.kind, e.entry.verdict].join(' \n '));
       e.original = value;
       if (live) { editing.original = value; status('Saved'); }
+      saved = true;
+      return saved;
       // If the card has already closed and is back on the page, re-render it:
       // a save that lands after Done must still show up.
       if (!live) {
@@ -629,13 +683,20 @@
         }
       }
     }).catch(function () {
+      e.original = prevOriginal;
+      e.verdictOriginal = prevVerdict;
       if (editing && editing.id === e.id) status('Offline — kept here, try again', true);
+      return false;
     });
   }
 
   function finish() {
-    if (editing && editing.textarea.value !== editing.original) save();
-    closeEditor();
+    if (!isDirty()) { closeEditor(); return; }
+    save().then(function (ok) {
+      // Keep the editor open on failure: closing would re-render the card
+      // from the last saved text and her words would be gone from the page.
+      if (ok) closeEditor();
+    });
   }
   document.addEventListener('keydown', function (ev) {
     if (ev.key === 'Escape' && editing) finish();
@@ -644,19 +705,20 @@
   // (phone locked, tab switched, browser closed). keepalive lets the request
   // finish after the page is gone.
   function flushHidden() {
-    if (!editing) return;
-    var value = editing.textarea.value;
-    if (value === editing.original) return;
+    if (!isDirty()) return;
     var e = editing;
+    var value = e.textarea.value;
     // Deliberately do NOT mark this as saved: if the request dies with the
     // page, the next Done or idle save resends, and an identical body is a
     // no-op server-side. Claiming success here could silently lose an edit.
     clearTimeout(saveTimer);
     try {
+      var payload = { id: e.id, notes: value };
+      if (e.picker.get() !== e.verdictOriginal) payload.verdict = e.picker.get();
       fetch('/api/save', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: e.id, notes: value }),
+        body: JSON.stringify(payload),
         keepalive: true,
       }).catch(function () {});
     } catch (err) { /* nothing better to do while unloading */ }
@@ -666,7 +728,7 @@
   });
   window.addEventListener('pagehide', flushHidden);
   window.addEventListener('beforeunload', function (ev) {
-    if (editing && editing.textarea.value !== editing.original) { ev.preventDefault(); ev.returnValue = ''; }
+    if (isDirty()) { ev.preventDefault(); ev.returnValue = ''; }
   });
 
   // --- adding a place -----------------------------------------------------
@@ -685,10 +747,11 @@
     name.setAttribute('aria-label', 'Name of the place');
     var hint = document.createElement('div');
     hint.className = 'addhint';
-    hint.textContent = 'Tags work here too: Name [GREAT] [thai]';
+    hint.textContent = 'Cuisine tags work in the name: Name [thai]';
     var t = document.createElement('textarea');
     t.className = 'editor';
     t.placeholder = 'Notes\u2026';
+    var addPicker = verdictPicker(null, function () {});
     t.setAttribute('aria-label', 'Notes');
     var row = document.createElement('div');
     row.className = 'editrow';
@@ -702,7 +765,8 @@
     go.type = 'button';
     go.textContent = 'Add';
     row.appendChild(st); row.appendChild(close); row.appendChild(go);
-    addCard.appendChild(name); addCard.appendChild(hint); addCard.appendChild(t); addCard.appendChild(row);
+    addCard.appendChild(name); addCard.appendChild(hint); addCard.appendChild(addPicker.el);
+    addCard.appendChild(t); addCard.appendChild(row);
     resultsEl.prepend(addCard);
     t.addEventListener('input', function () { autosize(t); });
     autosize(t);
@@ -725,7 +789,7 @@
       fetch('/api/add', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: n, notes: t.value }),
+        body: JSON.stringify({ name: n, notes: t.value, verdict: addPicker.get() }),
       }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, body: j }; }); })
         .then(function (out) {
           if (!out.ok) { stat(out.body.error || 'Could not add', true); go.disabled = false; return; }
@@ -734,7 +798,7 @@
           var entry = {
             id: out.body.id,
             name: n.replace(/\s*\[[^\]]*\]\s*/g, ' ').replace(/\s+/g, ' ').trim(),
-            kind: 'restaurant', verdict: null, closed: false, location: null,
+            kind: 'restaurant', verdict: addPicker.get(), closed: false, location: null,
             cuisine: [], people: [], visits: [],
             notes: t.value.replace(/\n+$/, ''),
           };
