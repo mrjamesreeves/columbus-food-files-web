@@ -112,46 +112,15 @@ function parseDates(text) {
 }
 
 // ---------------------------------------------------------------------------
+const { splitEntries } = require('../lib/entries');
+
 const raw = fs.readFileSync(SRC, 'utf8').replace(/\r\n/g, '\n');
-let blocks = raw.split(/\n\s*\n/).map((b) => b.replace(/\n+$/, '')).filter((b) => b.trim());
+// Entry boundaries are the shared lib's job — the same code the save and add
+// endpoints use — so the site can never disagree with the editor about where
+// a restaurant starts and ends.
+const blocks = splitEntries(raw).map((e) => e.nameLine + (e.body ? '\n' + e.body : ''));
 
-const report = { dropped: [], merged: [], duplicates: [], noVerdict: [], markets: [], notFood: [], oddTags: [] };
-
-// Drop the file title and Apple Notes' empty checkbox artefact.
-blocks = blocks.filter((b) => {
-  const first = b.split('\n')[0].trim();
-  if (/^OH restaurants reviewed$/i.test(first) || /^-\s*\[\s*\]$/.test(b.trim())) {
-    report.dropped.push(first || b.trim());
-    return false;
-  }
-  return true;
-});
-
-// A block whose first line is plainly not a name is a stray continuation of
-// the previous entry that picked up an extra blank line in Apple Notes.
-// A blank line inside an entry — before a bullet run, after a heading, or
-// around a stray link — would otherwise read as the start of a new
-// restaurant. None of these shapes can be a name.
-const CONTINUATION = new RegExp([
-  '^\\s*[*\\u2022\\u00b7-]\\s+',            // a bullet
-  '^\\s*https?://',                          // a bare link
-  '[-\\u2013\\u2014]\\s*$',                        // a dish stub left dangling: "Eggs Benedict - "
-  '^\\s*[^a-z0-9]*$',                         // punctuation only, e.g. "?"
-  // A heading, with or without its colon: "Great:", "Try.", "Good ok", "Not great:"
-  '^\\s*(not\\s+)?(great|good|ok|okay|meh|bad|try|excellent|order|avoid)(\\s+(ok|good|great))?\\s*[:.]?\\s*$',
-  '^(lunch buffets?|hours?|open|closed \\w+day|m-f|sa-su|tue|wed|thu|fri|sat|sun)\\b',
-].join('|'), 'i');
-const merged = [];
-for (const b of blocks) {
-  const first = b.split('\n')[0].trim();
-  if (merged.length && CONTINUATION.test(first)) {
-    report.merged.push({ into: merged[merged.length - 1].split('\n')[0].trim(), text: first });
-    merged[merged.length - 1] += '\n\n' + b;
-  } else {
-    merged.push(b);
-  }
-}
-blocks = merged;
+const report = { duplicates: [], noVerdict: [], markets: [], notFood: [], oddTags: [] };
 
 const entries = [];
 const seen = new Map();
@@ -284,9 +253,7 @@ console.log(`  with a cuisine tag  ${entries.filter((e) => e.cuisine.length).len
 console.log(`  with dated visits   ${entries.filter((e) => e.visits.length).length}`);
 console.log(`  mention people      ${entries.filter((e) => e.people.length).length}`);
 console.log(`  marked closed       ${entries.filter((e) => e.closed).length}`);
-console.log(`\n  dropped:        ${report.dropped.map((d) => JSON.stringify(d)).join(', ')}`);
-console.log(`  merged strays:  ${report.merged.map((m) => `"${m.text}" -> ${m.into}`).join('; ') || 'none'}`);
-console.log(`  duplicates:     ${report.duplicates.join(', ') || 'none'}`);
+console.log(`\n  duplicates:     ${report.duplicates.join(', ') || 'none'}`);
 console.log(`  markets kept:   ${report.markets.length} (${report.markets.join(', ')})`);
 console.log(`  not food, dropped: ${report.notFood.length} (${report.notFood.join(', ')})`);
 if (report.oddTags.length) {

@@ -179,6 +179,16 @@
                     padding:11px 22px; cursor:pointer; border:0; min-height:44px;
                     background:var(--accent); color:#fff; }
 
+  .addname { width:100%; font-family:var(--serif); font-weight:700; font-size:25px;
+             color:var(--ink); background:var(--paper); border:1px solid var(--accent);
+             border-radius:8px; padding:10px 13px; -webkit-appearance:none; }
+  .addname:focus { outline:none; box-shadow:0 0 0 3px rgba(236,0,0,.12); }
+  .addname::placeholder { color:var(--faint); font-family:var(--sans); font-weight:400; font-size:17px; }
+  .addhint { font-size:12.5px; color:var(--faint); margin-top:7px; }
+  .closeadd { font:inherit; font-size:14px; color:var(--soft); background:none;
+              border:0; padding:11px 8px; cursor:pointer; }
+  .closeadd:hover { color:var(--ink); }
+
   .signin-wrap { max-width:340px; margin:60px auto; }
   .signin-wrap h2 { font-family:var(--serif); font-weight:700; font-size:26px; margin-bottom:6px; }
   .signin-wrap p { color:var(--soft); font-size:14px; margin-bottom:16px; }
@@ -559,10 +569,11 @@
     t.addEventListener('input', function () {
       autosize(t);
       status(t.value === editing.original ? 'Saved' : 'Unsaved');
-      // A safety net, not the main path: if she locks her phone mid-thought
-      // the edit is already on its way.
+      // A safety net, not the main path. A long idle window keeps a writing
+      // session from becoming twenty commits and twenty deploys; the page
+      // also saves the moment it is hidden or closed, so nothing is lost.
       clearTimeout(saveTimer);
-      if (t.value !== editing.original) saveTimer = setTimeout(save, 2000);
+      if (t.value !== editing.original) saveTimer = setTimeout(save, 20000);
     });
     t.focus();
     // iOS needs a beat before it will scroll a freshly focused field into view.
@@ -629,10 +640,128 @@
   document.addEventListener('keydown', function (ev) {
     if (ev.key === 'Escape' && editing) finish();
   });
-  // Never lose an edit to a stray navigation.
+  // Never lose an edit to a stray navigation: flush when the page hides
+  // (phone locked, tab switched, browser closed). keepalive lets the request
+  // finish after the page is gone.
+  function flushHidden() {
+    if (!editing) return;
+    var value = editing.textarea.value;
+    if (value === editing.original) return;
+    var e = editing;
+    // Deliberately do NOT mark this as saved: if the request dies with the
+    // page, the next Done or idle save resends, and an identical body is a
+    // no-op server-side. Claiming success here could silently lose an edit.
+    clearTimeout(saveTimer);
+    try {
+      fetch('/api/save', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: e.id, notes: value }),
+        keepalive: true,
+      }).catch(function () {});
+    } catch (err) { /* nothing better to do while unloading */ }
+  }
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'hidden') flushHidden();
+  });
+  window.addEventListener('pagehide', flushHidden);
   window.addEventListener('beforeunload', function (ev) {
     if (editing && editing.textarea.value !== editing.original) { ev.preventDefault(); ev.returnValue = ''; }
   });
+
+  // --- adding a place -----------------------------------------------------
+  var addCard = null;
+
+  function openAddForm() {
+    if (addCard) { addCard.querySelector('.addname').focus(); return; }
+    if (editing) finish();
+
+    addCard = document.createElement('article');
+    addCard.className = 'card';
+    var name = document.createElement('input');
+    name.className = 'addname';
+    name.type = 'text';
+    name.placeholder = 'Name of the place';
+    name.setAttribute('aria-label', 'Name of the place');
+    var hint = document.createElement('div');
+    hint.className = 'addhint';
+    hint.textContent = 'Tags work here too: Name [GREAT] [thai]';
+    var t = document.createElement('textarea');
+    t.className = 'editor';
+    t.placeholder = 'Notes\u2026';
+    t.setAttribute('aria-label', 'Notes');
+    var row = document.createElement('div');
+    row.className = 'editrow';
+    var st = document.createElement('span');
+    st.className = 'status';
+    var close = document.createElement('button');
+    close.type = 'button';
+    close.className = 'closeadd';
+    close.textContent = 'Close';
+    var go = document.createElement('button');
+    go.type = 'button';
+    go.textContent = 'Add';
+    row.appendChild(st); row.appendChild(close); row.appendChild(go);
+    addCard.appendChild(name); addCard.appendChild(hint); addCard.appendChild(t); addCard.appendChild(row);
+    resultsEl.prepend(addCard);
+    t.addEventListener('input', function () { autosize(t); });
+    autosize(t);
+    name.focus();
+    addCard.scrollIntoView({ block: 'start' });
+
+    function stat(m, err) { st.textContent = m || ''; st.className = 'status' + (err ? ' err' : ''); }
+
+    close.addEventListener('click', function () {
+      if ((name.value.trim() || t.value.trim()) &&
+          !window.confirm('Throw away this unsaved place?')) return;
+      addCard.remove(); addCard = null;
+    });
+
+    go.addEventListener('click', function () {
+      var n = name.value.trim();
+      if (!n) { stat('It needs a name', true); name.focus(); return; }
+      stat('Adding\u2026');
+      go.disabled = true;
+      fetch('/api/add', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: n, notes: t.value }),
+      }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, body: j }; }); })
+        .then(function (out) {
+          if (!out.ok) { stat(out.body.error || 'Could not add', true); go.disabled = false; return; }
+          // The rebuild will derive verdict, cuisine and the rest from the
+          // name line and notes; until then show it plainly.
+          var entry = {
+            id: out.body.id,
+            name: n.replace(/\s*\[[^\]]*\]\s*/g, ' ').replace(/\s+/g, ' ').trim(),
+            kind: 'restaurant', verdict: null, closed: false, location: null,
+            cuisine: [], people: [], visits: [],
+            notes: t.value.replace(/\n+$/, ''),
+          };
+          entry._hay = norm(entry.name + ' \n ' + entry.notes);
+          var key = entry.name.toLowerCase().replace(/^the\s+/, '');
+          var at = ENTRIES.findIndex(function (e) {
+            return e.name.toLowerCase().replace(/^the\s+/, '') > key;
+          });
+          if (at === -1) ENTRIES.push(entry); else ENTRIES.splice(at, 0, entry);
+          addCard.remove(); addCard = null;
+          render();
+          var el = document.getElementById(entry.id);
+          if (el) el.scrollIntoView({ block: 'center' });
+        })
+        .catch(function () { stat('Offline \u2014 kept here, try again', true); go.disabled = false; });
+    });
+  }
+
+  if (IS_EDITOR) {
+    var addBtn = document.createElement('button');
+    addBtn.className = 'btn';
+    addBtn.type = 'button';
+    addBtn.textContent = '+ Add';
+    addBtn.title = 'Add a place';
+    addBtn.addEventListener('click', openAddForm);
+    document.querySelector('.searchrow').appendChild(addBtn);
+  }
 
   // --- sign in ----------------------------------------------------------
   function showSignIn() {

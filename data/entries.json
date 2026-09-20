@@ -17,7 +17,7 @@
       "$35 after tip"
     ],
     "links": [],
-    "notes": "Grandview Ave\nlunch buffet! \nM-F 11:30-2:30 \nSa-Su 12-3\n17 min south of home \nGreat!\nNice inside. Lots of foods\nChicken tikka masala - great, creamy \nAlso had fried spicy meatball, fried pakora, spinach paneer, a few creamy veg dishes, garlic naan, watermelon, rice pudding.\n2nd time we went different things - great shrimp in shrimp curry\nCost $15 each for lunch \n$35 after tip"
+    "notes": "Grandview Ave\nlunch buffet! \nM-F 11:30-2:30 \nSa-Su 12-3\n17 min south of home \nGreat!\n- Nice inside. Lots of foods\n- Chicken tikka masala - great, creamy \n- Also had fried spicy meatball, fried pakora, spinach paneer, a few creamy veg dishes, garlic naan, watermelon, rice pudding.\n- great shrimp in shrimp curry\nCost $15 each for lunch \n$35 after tip"
   },
   {
     "id": "aangan-india-bistro",
@@ -41,7 +41,7 @@
       "$33 w tip"
     ],
     "links": [],
-    "notes": "5 min west of us across river\nGreat! In huge space w giant bar (used to be Mexican) and second floor diagrams, just opened Dec 2023\nPapari chat appetizer - Choley (chickpea curry), potatoes, pastry, cilantro and different spices. - interesting but too sweet \nFish pakora - good, small fried pieces of fish \nKadahi ginger chicken - spice level 2 - didn’t really taste ginger \nSaag paneer - good standard \nChicken korma - great \nGarlic naan - great \nVeg biryani - j said it’s fine \nLunch special $13 - for 3 small dishes, plentiful naan, basmati rice, sugar ball.\nVeg and non veg options only difference is one small dish \nMutter paneer really good flavor, red sauce\nPalak paneer good \nSome sour yellow curry meh \nNaan good (not spectacular) and generous portion, couldn’t finish \n$33 w tip for two"
+    "notes": "5 min west of us across river\nGreat! In huge space w giant bar (used to be Mexican) and second floor diagrams, just opened Dec 2023\nPapari chat appetizer - Choley (chickpea curry), potatoes, pastry, cilantro and different spices. - interesting but too sweet \n- Fish pakora - good, small fried pieces of fish \n- Kadahi ginger chicken - spice level 2 - didn’t really taste ginger \n- Saag paneer - good standard \nChicken korma - great \nGarlic naan - great \nVeg biryani - j said it’s fine \nLunch special $13 - for 3 small dishes, plentiful naan, basmati rice, sugar ball.\nVeg and non veg options only difference is one small dish \nMutter paneer really good flavor, red sauce\nPalak paneer good \nSome sour yellow curry meh \nNaan good (not spectacular) and generous portion, couldn’t finish \n$33 w tip for two"
   },
   {
     "id": "agni",
@@ -330,10 +330,7 @@
     "verdictConfidence": "low",
     "closed": false,
     "location": "In strip in front of Target on Sawmill",
-    "cuisine": [
-      "japanese",
-      "mexican"
-    ],
+    "cuisine": [],
     "people": [
       "J"
     ],
@@ -342,7 +339,7 @@
       "$12"
     ],
     "links": [],
-    "notes": "(In strip in front of Target on Sawmill)\nGreat but small portions - Got burrito bowl w hibachi shrimp, brown rice,\nbeans, tomato salsa, corn, red onions, cilantro, lettuce w regular salsa sauce on side. ($12) custom fast food style like Bibibop. Salsa good flavor, glad only in one corner. Added Greek yogurt at home. Shrimp small but tender (cooked on demand) and good flavor. \nJ got spicy pork burrito and liked it.\nQuesadilla chicken - ok, good char and size, just not into charred chicken flavor, too something"
+    "notes": "(In strip in front of Target on Sawmill)\nGreat:\nBirria Crunchstack - delicious! J loves it too. Like a crunchwrap supreme but with moist tender beef mixed w cilantro + red onion. Subtle kick, nicely spiced. Comes with \"beef consommé\" like a beef broth but really don't need it because meat already so moist.\nJ got a chipotle cream burrito and loved it.\nJ got spicy pork burrito and liked it.\nOk:\nGot burrito bowl w hibachi shrimp, brown rice, beans, tomato salsa, corn, red onions, cilantro, lettuce w regular salsa sauce on side. ($12) custom fast food style like Bibibop. Salsa good flavor, glad only in one corner. Added Greek yogurt at home. Shrimp small but tender (cooked on demand) and good flavor. \nQuesadilla chicken - ok, good char and size, just not into charred chicken flavor, too something"
   },
   {
     "id": "buckeye-pho",
@@ -839,11 +836,15 @@
     "closed": false,
     "location": null,
     "cuisine": [],
-    "people": [],
+    "people": [
+      "J",
+      "Mom",
+      "Dad"
+    ],
     "visits": [],
     "prices": [],
     "links": [],
-    "notes": "Biscuits and turkey sausage gravy w eggs and mixed greens (instead of potatoes) - great! \nSteak and Eggs hash - good flavor w parmesan sauce and sunny side eggs, but not much steak, mostly potatoes \nCobb salad - \nPesto chicken quinoa bowl - \nBiscuit and gravy side - great! Homemade feeling with the right flavor \nSmoked salmon Benedict - good"
+    "notes": "Great:\n- Biscuits and turkey sausage gravy w eggs and mixed greens (instead of potatoes) - platonic biscuits gravy great \n- pumpkin pancakes - j liked it a lot. Good flavor and consistency almost like bread pudding. \n- chicken pesto quinoa power bowl - mom had, liked, would have again \nBacon avocado omelette - j had, said light and fluffy and would have again \n- salad - dad liked it \nOk:\n- beef barbacoa breakfast tacos. Pretty good, would like more meat, side of beans were unseasoned, had to use salt pepper \n- Steak and Eggs hash - good flavor w parmesan sauce and sunny side eggs, but not much steak, mostly potatoes \n-\nCobb salad - \nPesto chicken quinoa bowl - \nSmoked salmon Benedict - good"
   },
   {
     "id": "frank-and-carls",
